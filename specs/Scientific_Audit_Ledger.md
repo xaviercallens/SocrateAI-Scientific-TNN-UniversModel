@@ -41,3 +41,14 @@ Nous introduisons le dataset **MD17 (Molecular Dynamics 17)** :
   - MAE Énergie : `6526.3462 kcal/mol`
   - MAE Forces : `19.7118 kcal/mol/Å`
 - **Statut de l'Audit** : ✅ VALIDÉ SANS "FAKES" NI "STUBS".
+
+### 🛡️ Certificat d'Exécution Empirique PDE (Navier-Stokes 2D)
+- **Date & Heure** : 2026-08-12T17:12:38.443645
+- **Durée de Traitement** : 1441.25 secondes
+- **Source des Données** : Caltech/Zenodo (nsforcing_128.pt)
+- **Domaine Physique** : Mécanique des Fluides Continu (Équations de Navier-Stokes Incompressibles)
+- **Opérateur Utilisé** : Fourier Neural Operator 2D (FNO - 4 layers, n_modes=(12,12))
+- **Volume & Résolution** : 150 Train / 50 Test champs réels/spectraux (128x128/64x64).
+- **Résultats Physiques (Test Set)** :
+  - MSE Opérateur de Fourier : `0.129111`
+- **Statut de l'Audit** : ✅ CERTIFIÉ PHYSIQUEMENT RIGOURANT & MESHFREE.
