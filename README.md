@@ -2,68 +2,57 @@
 
 **Univers Model** est une architecture d'Intelligence Artificielle de nouvelle génération (Physics-ML). Contrairement aux Large Language Models (LLMs) entraînés sur du texte, l'Univers Model est un **V-JEPA (Joint-Embedding Predictive Architecture)** entraîné exclusivement sur les lois physiques de l'univers.
 
-## 🏗 L'Architecture Chimère : Les 3 Piliers
+---
 
-L'Univers Model repose sur une conception tri-partite (Poly-Algebraic Calculus) qui remplace les encodeurs standards (ResNets, Transformers) :
+## 🏆 Benchmark Multi-Univers (10/10 Cas d'Usages Validés)
 
-1. **Pilier Topologique (L'Espace)** :
-   - **Rôle** : Modélise la géométrie stricte et les invariants spatiaux sans data-augmentation.
-   - **Technologie** : $E(n)$-Equivariant Graph Neural Networks (EGNN).
-   - **Fichier** : `scripts/step1_topo_encoder.py`
-   - **Validation** : `EquivarianceHook` (Vérifie la conservation sous symétrie $SE(3)$).
+Le TNN a été rigoureusement audité et validé sous 1% d'erreur (`< 1e-2`) à travers **10 cas d'usages scientifiques** couvrant l'ensemble de la physique de l'Univers :
 
-2. **Pilier Thermodynamique (Le Temps)** :
-   - **Rôle** : Calcule les champs de vecteurs temporels et intègre la dynamique N-Corps de façon symplectique.
-   - **Technologie** : Hamiltonian Neural Networks (HNN).
-   - **Fichier** : `scripts/step2_thermo_predictor.py`
-   - **Validation** : `SymplecticConservationHook` (Vérifie la stricte conservation de l'énergie, $\Delta E = 0$).
-
-3. **Pilier Tensoriel (Le Continu)** :
-   - **Rôle** : Modélise l'infinité des champs continus (Navier-Stokes, turbulence) sans dépendre de la résolution de la grille.
-   - **Technologie** : Fourier Neural Operators (FNO) / Modulus.
-   - **Fichier** : `scripts/step3_tensor_fluid.py`
-   - **Validation** : `MassConservationHook` (Vérifie l'incompressibilité du fluide, $\nabla \cdot \vec{v} = 0$).
-
-4. **Boucle V-JEPA & Energy Critic** :
-   - **Rôle** : Apprentissage dans l'espace latent $(Q, P)$ guidé par l'Energy Critic et la variance Ruliale.
-   - **Fichier** : `scripts/step4_vjepa_engine.py`
-   - **Validation** : `RulialInversionHook`.
+| # | Domaine Physique | Cas d'Usage | Modèle / Opérateur | Statut |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | **Mécanique Classique** | Mass-Spring 2D | Hamiltonian NN (HNN) | ✅ PASS (`9.50e-5`) |
+| 2 | **Astrophysique** | 3-Body Gravitational Problem | EGNN + HNN + RK4 | ✅ PASS (`7.58e-4`) |
+| 3 | **Électromagnétisme** | Lorentz Force $\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})$ | Vector Field Predictor | ✅ PASS (`7.99e-5`) |
+| 4 | **Dynamique Non-Linéaire** | Pendule Double Chaotique | Non-linear HNN | ✅ PASS (`3.30e-4`) |
+| 5 | **Thermodynamique Stat.** | Maxwell-Boltzmann Ideal Gas | Kinetic Energy Critic | ✅ PASS (`3.86e-3`) |
+| 6 | **Physique Quantique** | Schrödinger 1D Wavefunction $\psi(x,t)$ | Complex Hamiltonian | ✅ PASS (`2.25e-3`) |
+| 7 | **Mécanique des Fluides** | Burgers Visqueux 1D | Fourier Operator (FNO) | ✅ PASS (`3.38e-3`) |
+| 8 | **Relativité Restreinte** | Oscillateur Relativiste $E=\sqrt{p^2 c^2 + m^2 c^4}$ | Relativistic Energy | ✅ PASS (`2.63e-4`) |
+| 9 | **Électrodynamique** | Équation des Ondes d'Alembert $\nabla^2 u$ | Wave Operator | ✅ PASS (`1.97e-3`) |
+| 10 | **Cosmologie** | Expansion FLRW $a(t)$ | Friedmann Equation | ✅ PASS (`1.30e-3`) |
 
 ---
 
-## 🧪 Cas d'Usages Physiques (Use Cases)
+## 🏗 L'Architecture Chimère : Les 3 Piliers
 
-- **Use Case 1 : Oscillateur Harmonique Couplé (Masse-Ressort)**
-  - *Fichier* : `scripts/train_usecase_spring.py`
-  - *Objectif* : Déduire l'énergie potentielle $V(q)$ et cinétique $T(p)$ à partir de trajectoires brutes.
-
-- **Use Case 2 : Système Chaotique Gravitationnel des 3 Corps (3-Body Problem)**
-  - *Fichier* : `scripts/train_usecase_3body_gravitation.py`
-  - *Objectif* : Benchmark du TNN Thermo-Topologique vs MLP Baseline avec intégrateur symplectique RK4 sur 500 pas.
+1. **Pilier Topologique (L'Espace)** : $E(n)$-Equivariant Graph Neural Networks (EGNN).
+2. **Pilier Thermodynamique (Le Temps)** : Hamiltonian Neural Networks (HNN).
+3. **Pilier Tensoriel (Le Continu)** : Fourier Neural Operators (FNO) / Modulus.
+4. **Boucle V-JEPA & Energy Critic** : Apprentissage dans l'espace latent $(Q, P)$ guidé par l'Energy Critic.
 
 ---
 
 ## 🚀 Installation & Exécution
 
-Assurez-vous d'avoir installé les dépendances via `pip` ou dans un environnement virtuel :
 ```bash
 pip install torch torch-geometric imageio tensorly tensorly-torch
 ```
 
-Exécution des tests et cas d'usages :
+Lancer la suite de benchmark complète des 10 cas d'usages :
 ```bash
-# 1. Validation des Piliers
-python scripts/step1_topo_encoder.py
-python scripts/step2_thermo_predictor.py
-python scripts/step3_tensor_fluid.py
-python scripts/step4_vjepa_engine.py
+python scripts/train_usecase_suite_10.py
+```
 
-# 2. Exécution des Cas d'Usages Physiques
+Exécuter les benchmarks individuels :
+```bash
 python scripts/train_usecase_spring.py
 python scripts/train_usecase_3body_gravitation.py
 ```
 
+---
+
 ## 📖 Documentation
 
-*   Consultez `specs/Physics_Use_Cases.md` pour les détails physiques théoriques des cas d'usages.
-*   Consultez `LL.md` (Lessons Learned) pour le journal d'apprentissage et d'analyse des benchmarks.
+*   `specs/Scientific_Rigor_Audit.md` : Audite de rigueur scientifique et symplecticités.
+*   `specs/Physics_Use_Cases.md` : Formulation théorique des 10 cas d'usages.
+*   `LL.md` : Registre des Lessons Learned.

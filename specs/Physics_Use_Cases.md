@@ -1,39 +1,55 @@
-# TNN Univers Model : Cas d'Usages Physiques (Use Cases)
+# TNN Univers Model : Catalogue des 10 Cas d'Usages Physiques (Use Cases)
 
-Ce document compile les expérimentations "Use Cases" simples et complexes permettant de valider l'apprentissage des lois fondamentales par le **TNN (Thermodynamic, Topological, Tensor Neural Network)**. 
-
----
-
-## Cas d'Usage 1 : L'Oscillateur Harmonique Couplé (Système Masse-Ressort à 2 Corps)
-
-### 1. La Physique du Système
-Le système étudié est composé de deux particules de masse $m_1 = m_2 = 1$ reliées par un ressort de raideur $k=1$ dans un espace 2D. 
-
-L'état du système est décrit par :
-*   Les positions $q_1, q_2 \in \mathbb{R}^2$
-*   Les moments $p_1, p_2 \in \mathbb{R}^2$
-
-**Le Hamiltonien (Énergie Totale)** $\mathcal{H}$ est la somme de l'énergie cinétique ($E_k$) et potentielle ($E_p$) :
-$$ \mathcal{H}(q, p) = \frac{||p_1||^2}{2m_1} + \frac{||p_2||^2}{2m_2} + \frac{1}{2} k ||q_1 - q_2||^2 $$
+Ce document compile 10 cas d'usages scientifiques couvrant l'ensemble du domaine physique de l'Univers (Mécanique classique, relativité, physique quantique, électromagnétisme, mécanique des fluides, thermodynamique et cosmologie).
 
 ---
 
-## Cas d'Usage 2 : Le Problème Chaotique des 3 Corps Gravitationnels (3-Body Problem)
+## 1. Oscillateur Harmonique Couplé (Mécanique Classique)
+- **Système** : 2 masses reliées par un ressort.
+- **Formulation** : $\mathcal{H}(q, p) = \frac{p_1^2}{2m} + \frac{p_2^2}{2m} + \frac{1}{2}k||q_1 - q_2||^2$.
+- **Fichier** : `scripts/train_usecase_spring.py`
 
-### 1. La Physique du Système
-Le problème des 3 corps sous l'effet de la gravité newtonienne est notoirement **chaotique et non intégrable analytiquement**. Une infime perturbation de l'état initial modifie drastiquement les trajectoires futures.
+## 2. Problème Chaotique des 3 Corps Gravitationnels (Astrophysique)
+- **Système** : 3 masses sous attraction gravitationnelle $1/r$.
+- **Formulation** : $\mathcal{H}(q, p) = \sum \frac{p_i^2}{2m_i} - \sum_{i<j} \frac{G m_i m_j}{||q_i - q_j||}$.
+- **Fichier** : `scripts/train_usecase_3body_gravitation.py`
 
-Pour $N=3$ corps de masses $m_i$ aux positions $q_i \in \mathbb{R}^3$ et moments $p_i \in \mathbb{R}^3$ :
-$$ \mathcal{H}(q, p) = \sum_{i=1}^3 \frac{||p_i||^2}{2 m_i} - \sum_{1 \le i < j \le 3} \frac{G \, m_i m_j}{||q_i - q_j||} $$
+## 3. Mouvement de Lorentz dans un Champ Électromagnétique (Électromagnétisme)
+- **Système** : Particule chargée $q$ dans un champ magnétique $\vec{B}$ et électrique $\vec{E}$.
+- **Formulation** : $\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})$.
+- **Fichier** : `scripts/train_usecase_lorentz.py`
 
-### 2. Le Défi pour les IA Classiques vs TNN
-*   **IA Classique (Transformers / Feed-Forward / LSTMs)** : Prédire $(q_{t+1}, p_{t+1})$ par régression directe entraîne une dissipation numérique d'énergie. Les planètes s'effondrent rapidement vers le centre de masse ou sont éjectées artificiellement de leur orbite.
-*   **TNN Thermo-Topologique (EGNN + HNN + RK4)** : 
-    1.  **EGNN** : Apprend le potentiel gravitationnel $V(q)$ de manière strictement $E(3)$-équivariante (invariante par rotation et translation dans l'espace 3D).
-    2.  **HNN** : Dérive les forces exactes via $\dot{p}_i = -\nabla_{q_i} \mathcal{H}$.
-    3.  **Intégrateur Symplectique RK4** : Avance l'état temporel tout en préservant le volume dans l'espace des phases (Symplecticités).
+## 4. Pendule Double Chaotique (Dynamique Non-Linéaire)
+- **Système** : 2 tiges rigides sous l'effet de la gravité.
+- **Formulation** : Hamiltonien à 2 angles $(\theta_1, \theta_2, p_1, p_2)$ fortement couplé et chaotique.
+- **Fichier** : `scripts/train_usecase_double_pendulum.py`
 
-### 3. Métriques de Validation
-1.  **Stabilité Orbitale à Long Terme** : Zéro effondrement orbital.
-2.  **Conservation de l'Énergie** : $\Delta \mathcal{H} \approx 0$ sur 1000 pas de temps.
-3.  **Comparaison Baseline** : Comparaison directe contre un réseau dense standard (MLP) sur la même trajectoire.
+## 5. Gaz Parfait & Distribution de Maxwell-Boltzmann (Thermodynamique Statistique)
+- **Système** : Ensemble de $N$ particules d'un gaz en collisions élastiques dans une boîte.
+- **Formulation** : Conservation de l'énergie cinétique totale $\sum \frac{1}{2}m v_i^2$ et émergence de la température $T$.
+- **Fichier** : `scripts/train_usecase_gas_kinetics.py`
+
+## 6. Équation de Schrödinger Temporelle 1D (Physique Quantique)
+- **Système** : Fonction d'onde $\psi(x, t)$ dans un puits de potentiel.
+- **Formulation** : $i \hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x)\psi$.
+- **Fichier** : `scripts/train_usecase_schrodinger.py`
+
+## 7. Équation de Burgers Visqueuse 1D (Mécanique des Fluides / Chocs)
+- **Système** : Champ de vitesse fluide soumis à l'advection et à la viscosité $\nu$.
+- **Formulation** : $\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = \nu \frac{\partial^2 u}{\partial x^2}$.
+- **Fichier** : `scripts/train_usecase_burgers.py`
+
+## 8. Oscillateur Harmonique Relativiste (Relativité Restreinte)
+- **Système** : Particule relativiste oscillante à des vitesses proches de la lumière ($c$).
+- **Formulation** : $\mathcal{H}(q, p) = \sqrt{p^2 c^2 + m^2 c^4} + \frac{1}{2} k q^2$.
+- **Fichier** : `scripts/train_usecase_relativistic.py`
+
+## 9. Équation des Ondes 1D de D'Alembert (Physique Ondulatoire / Électrodynamique)
+- **Système** : Propagation d'une onde scalaire dans un milieu continu.
+- **Formulation** : $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$.
+- **Fichier** : `scripts/train_usecase_wave_equation.py`
+
+## 10. Expansion Cosmique N-Corps (Cosmologie FLRW)
+- **Système** : Distribution de matière subissant l'expansion métrique $a(t)$ de l'Univers.
+- **Formulation** : Coordonnées comobiles $x = r/a(t)$ sous l'équation de Friedmann.
+- **Fichier** : `scripts/train_usecase_cosmo_flrw.py`
