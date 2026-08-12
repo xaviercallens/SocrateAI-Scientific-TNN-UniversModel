@@ -1,29 +1,29 @@
-# Phase 2: RunuX TNN Integration Roadmap (The Neuro-Symbolic Bridge)
+# TNN Univers Model: Master Roadmap (Phases 2 to 4)
 
-## Objectif Principal
-Remplacer l'environnement d'exécution PyTorch (instable, gourmand en "Virtual Heat" à cause du GIL Python) par le **RunuX AI Runtime**. Ce passage vers un noyau Rust `no_std` va permettre d'exploiter la sécurité mémoire native, d'atteindre 88% d'occupation sur les Google TPU v5e/v6e (via `tpu_pjrt`), et de lier formellement les axiomes mathématiques du noyau **Lean 4** via une FFI (Foreign Function Interface).
+Suite à l'analyse stratégique et de faisabilité, le développement du TNN Univers Model est désormais structuré selon le plan d'exécution "Divide and Conquer" suivant. L'idée initiale d'intégration du **RunuX AI Runtime** est conservée comme socle de sécurité et de performance pour le vHPU.
 
-## Étape 2.1 : Mise en place du pont Neuro-Symbolique (Lean 4 ↔ Rust FFI)
-*   **Action** : Compiler les théorèmes de `specs/TNN_Invariants.lean` (Conservation Symplectique de l'Énergie) vers des librairies C statiques.
-*   **Action** : Développer le module Rust `runux-ai-runtime/crates/ai_runtime/src/lean_ffi.rs` pour lier le noyau d'exécution aux preuves générées.
-*   **Livrable** : Le "Zero-Sorry Symplectic Hook" implémenté en Rust natif, rejetant au niveau du CPU/TPU toute prédiction (EGNN/FNO) qui viole la thermodynamique.
+## Phase 2 : The vHPU Software Execution (RunuX AI Engine)
+L'objectif est de prouver que le Calcul Poly-Algébrique fonctionne plus efficacement qu'un Multi-Layer Perceptron standard sur une architecture logicielle émulée.
 
-## Étape 2.2 : Portage du Pilier Topologique (EGNN) sur Rust/RVV
-*   **Action** : Réécrire l'Encodeur Topologique (EGNN) en utilisant le crate `rvv_simd` de RunuX.
-*   **Action** : Optimiser le passage de messages (Message Passing) N-corps pour utiliser les instructions vectorielles RISC-V 256/1024-bit.
-*   **Livrable** : L'Hémisphère Gauche (Logique/Spatial) de l'architecture *SymBrain v4*, capable de simuler la topologie 3D (MD17/QM9) sans overhead mémoire.
+*   **Étape 2.1 : Intégration RunuX AI Runtime** : Remplacer l'environnement PyTorch par le noyau Rust `no_std` RunuX.
+*   **Étape 2.2 : Pilier Topologique (EGNN)** : Portage de l'Encodeur Spatial en exploitant le crate `rvv_simd` (RISC-V Vector).
+*   **Étape 2.3 : Pilier Tensoriel (FNO)** : Tiling systolique 128x128 pour maximiser l'occupation HBM via `stablehlo` (Cloud TPU).
+*   **Étape 2.4 : Expérimentation Empirique** : Profiling du *Virtual Heat* sur un cas d'usage hautement simplifié (ex: onde de choc de Burgers 1D) pour prouver l'économie de cycles d'horloge.
+*   **Livrable** : Publication d'un article d'architecture informatique ciblé : *Emulating Hyper-Arity Topology on von Neumann Architecture: The vHPU Engine*. Dépôt GitHub open-source du moteur vHPU.
 
-## Étape 2.3 : Tiling Systolique du Pilier Tensoriel (FNO) pour TPU
-*   **Action** : Traduire l'opérateur continu FNO (Transformées de Fourier Rapides 2D) en utilisant `stablehlo` et `tpu_pjrt`.
-*   **Action** : Forcer le Tiling Systolique à 128x128 (via `mlgo_advisor`) pour maximiser la bande passante HBM (High Bandwidth Memory) sur le Cloud TPU.
-*   **Livrable** : L'Hémisphère Droit (Synthétique/Ondulatoire) pour simuler Navier-Stokes et la Cosmologie FLRW avec des performances "bare-metal".
+## Phase 3 : Hardware Prototyping (The Tabletop TNN)
+La construction de matériel physique est coûteuse et chronophage. Nous nous concentrerons exclusivement sur le protocole le plus visuel et intuitif.
 
-## Étape 2.4 : Implémentation du Routeur PFC (V-JEPA & HNN)
-*   **Action** : Implémenter le V-JEPA et le HNN Energy Critic au sein de la boucle principale d'inférence Rust.
-*   **Action** : Utiliser le compresseur `turbo_quant` de RunuX pour compresser les grilles EDP de 4096 dimensions vers les 64 dimensions latentes.
-*   **Livrable** : Un moteur exécutable (`runux-tnn-engine`) unifiant les deux hémisphères sous l'autorité formelle du PFC.
+*   **Étape 3.1 : Acoustic-Fluidic Rulial Table** : Construction d'un prototype physique (Protocole 01) utilisant un dispositif Raspberry Pi / RISC-V.
+*   **Étape 3.2 : Digital-to-Fluid Transition** : Enregistrement haute vitesse des transitions de phase fluides (liaisons $\Xi^{\langle 4 \rangle}$) induites par des inputs digitaux.
+*   **Livrable** : Preuve de concept (PoC) filmée démontrant qu'un substrat physique peut maintenir une porte logique Poly-Algébrique avec un coût thermodynamique en veille (standby) quasi-nul.
 
-## Étape 2.5 : Benchmarking "Bare-Metal" et Certification Phase 2
-*   **Action** : Relancer les 10 expériences physiques avec le nouveau moteur compilé.
-*   **Action** : Comparer la latence, la consommation énergétique (Green AI), et l'occupation MXU par rapport à la Phase 1 (PyTorch).
-*   **Livrable** : Un papier de recherche étendu (Research Paper v2.0) actant la naissance du premier *Univers Model* formellement certifié et hardware-accéléré au monde.
+## Phase 4 : The Mathematical Quarantine (Lean 4 Kernel)
+Une fois le modèle logiciel et le prototype matériel viables, l'intégration formelle neuro-symbolique assurera l'intégrité absolue (Zero-Sorry).
+
+*   **Étape 4.1 : Lean-PyTorch FFI** : Création d'une API C/Rust pour lier les théorèmes compilés (Conservation Symplectique de l'Énergie) au `runux-ai-runtime`.
+*   **Étape 4.2 : Le "Zero-Sorry Symplectic Hook"** : Implémentation du routeur PFC (Prefrontal Cortex) garantissant que les prédictions EGNN/FNO sont rejetées par le matériel si elles violent la thermodynamique.
+*   **Livrable** : Le moteur TNN final, formellement prouvé, constituant une architecture Neuro-Symbolique d'avant-garde.
+
+---
+*Note : Le manifeste visionnaire sur la perturbation biologique (Self-Compiling TNN) sera traité indépendamment et soumis à des journaux spécialisés en Systèmes Complexes et Vie Artificielle.*
