@@ -43,3 +43,15 @@ Ce document est un registre chronologique des "Lessons Learned" (leçons apprise
 ### 2. Les Limites de l'Opérateur Pur et le "Physics-Informed" (PINO)
 *   **Constat** : Contrairement au HNN qui calcule mathématiquement la physique stricte via l'Autograd, le FNO brut (Vanilla FNO) reste un modèle purement data-driven. Notre `MassConservationHook` démontre qu'à l'initialisation, le champ de vitesse généré viole massivement l'incompressibilité ($\nabla \cdot \vec{v} \neq 0$).
 *   **Leçon** : Le FNO doit obligatoirement être transformé en un Physics-Informed Neural Operator (PINO) en utilisant le framework NVIDIA Modulus. Nous devons explicitement définir la pénalité thermodynamique (la conservation de la masse et la dissipation) dans une équation de perte résiduelle pour "forcer" le FNO à obéir aux PDEs de l'Univers. C'est l'essence du futur **Energy Critic**.
+
+---
+
+## Étape 4 : L'Architecture V-JEPA et l'Energy Critic
+
+### 1. De la Coordonnée Physique à l'Espace Latent Canonique
+*   **Constat** : Prédire les coordonnées exactes N-corps $(q_{t+1}, p_{t+1})$ dans un fluide ou une galaxie est impossible à cause du chaos déterministe. 
+*   **Leçon** : Le V-JEPA résout ce problème en prédisant l'évolution du système **dans l'espace latent**. Le Topo-Encoder compresse la physique (Poly-Contraction) vers un espace canonique réduit $(Q, P)$. C'est dans cet espace abstrait (le *Ruliad*) que le modèle intègre le temps et la thermodynamique de manière hyper-rapide.
+
+### 2. Le Rôle Fondamental de l'Energy Critic
+*   **Constat** : Le V-JEPA original de Meta (pour la vidéo ou le texte) utilise la MSE (L2) pure sur les vecteurs latents. Cela provoque souvent un "Dimensional Collapse" ou produit des dynamiques non physiques.
+*   **Leçon** : Nous avons remplacé l'erreur L2 par l'**Energy Critic**. Ce dernier force le Prédicteur latent à respecter le principe de conservation d'énergie ($\mathcal{H}(\hat{z}_{t+1}) = \mathcal{H}(z_t)$). Ainsi, l'encodeur ne peut pas tricher en réduisant la variance des vecteurs à zéro ; il est forcé d'apprendre les vraies symétries sous-jacentes du monde physique. Le `RulialInversionHook` confirme la stabilité du système et l'absence d'effondrement dimensionnel.
