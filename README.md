@@ -24,6 +24,25 @@ L'Univers Model repose sur une conception tri-partite (Poly-Algebraic Calculus) 
    - **Fichier** : `scripts/step3_tensor_fluid.py`
    - **Validation** : `MassConservationHook` (Vérifie l'incompressibilité du fluide, $\nabla \cdot \vec{v} = 0$).
 
+4. **Boucle V-JEPA & Energy Critic** :
+   - **Rôle** : Apprentissage dans l'espace latent $(Q, P)$ guidé par l'Energy Critic et la variance Ruliale.
+   - **Fichier** : `scripts/step4_vjepa_engine.py`
+   - **Validation** : `RulialInversionHook`.
+
+---
+
+## 🧪 Cas d'Usages Physiques (Use Cases)
+
+- **Use Case 1 : Oscillateur Harmonique Couplé (Masse-Ressort)**
+  - *Fichier* : `scripts/train_usecase_spring.py`
+  - *Objectif* : Déduire l'énergie potentielle $V(q)$ et cinétique $T(p)$ à partir de trajectoires brutes.
+
+- **Use Case 2 : Système Chaotique Gravitationnel des 3 Corps (3-Body Problem)**
+  - *Fichier* : `scripts/train_usecase_3body_gravitation.py`
+  - *Objectif* : Benchmark du TNN Thermo-Topologique vs MLP Baseline avec intégrateur symplectique RK4 sur 500 pas.
+
+---
+
 ## 🚀 Installation & Exécution
 
 Assurez-vous d'avoir installé les dépendances via `pip` ou dans un environnement virtuel :
@@ -31,19 +50,20 @@ Assurez-vous d'avoir installé les dépendances via `pip` ou dans un environneme
 pip install torch torch-geometric imageio tensorly tensorly-torch
 ```
 
-Testez l'intégrité "Zero-Sorry" de chaque pilier :
+Exécution des tests et cas d'usages :
 ```bash
-# Tester l'invariance SE(3) sur des molécules QM9
+# 1. Validation des Piliers
 python scripts/step1_topo_encoder.py
-
-# Tester la conservation de l'énergie sur un système N-Corps
 python scripts/step2_thermo_predictor.py
-
-# Tester la modélisation de fluide et mesurer la divergence
 python scripts/step3_tensor_fluid.py
+python scripts/step4_vjepa_engine.py
+
+# 2. Exécution des Cas d'Usages Physiques
+python scripts/train_usecase_spring.py
+python scripts/train_usecase_3body_gravitation.py
 ```
 
 ## 📖 Documentation
 
-*   Consultez le fichier `LL.md` (Lessons Learned) pour le journal d'implémentation et de la théorie (Virtual Heat, Zero-Sorry Verification).
-*   Consultez le dossier `specs/` pour la roadmap, les manifestes mathématiques et la bibliographie.
+*   Consultez `specs/Physics_Use_Cases.md` pour les détails physiques théoriques des cas d'usages.
+*   Consultez `LL.md` (Lessons Learned) pour le journal d'apprentissage et d'analyse des benchmarks.
