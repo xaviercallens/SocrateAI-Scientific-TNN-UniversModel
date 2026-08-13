@@ -1,0 +1,8 @@
+{
+    "timestamp": 1786600267.694509,
+    "policy": "Zero-Stub (Deterministic PDE)",
+    "hardware": "CPU (torch.profiler)",
+    "mlp_time_us": 2997557.5659999996,
+    "vhpu_time_us": 275912.848,
+    "speedup_factor": 10.864146369871111
+}
