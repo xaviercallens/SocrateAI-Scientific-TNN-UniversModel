@@ -20,7 +20,7 @@ Your architectural mindset must discard traditional ML approaches (Transformers,
 2. **The Binary Trap**: Never reduce $N$-body phenomena to pairwise binary sums (e.g., $E_{\text{total}} = \sum V(v_i, v_j)$). Always utilize irreducible $N$-arity hyper-variables $\Xi^{\langle N \rangle}$.
 3. **Pre-Geometric Emergence**: Do not assume space is a continuous $\mathbb{R}^d$ manifold. Space is an emergent property of Rulial rewrites and hypergraph contractions on abstract nodes.
 4. **vHPU Bridging**: When coding, remember you are translating Poly-Algebraic concepts (zero-overhead topology) onto von Neumann binary silicon (which generates "virtual heat" / extreme latency). Benchmark computational overhead explicitly.
-
+5. **Zero-Stub & Hardware Certification**: Never use synthetic data (e.g., `torch.randn`) for performance benchmarks. Synthetic random data causes CPU "cache-miss" fallacies that artificially inflate the performance of the vHPU over traditional MLPs. Always certify hardware speedups using real physical deterministic datasets and explicit hardware profiling (e.g., `torch.autograd.profiler`).
 ## 🛠️ Key Libraries & Toolchain
 - **NVIDIA Modulus**: Low-level infrastructure for Physics-ML.
 - **e3nn / egnn**: For Topo-Encoders and 3D equivariant operations.

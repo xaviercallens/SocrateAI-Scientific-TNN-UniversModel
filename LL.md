@@ -62,3 +62,14 @@ Ce document est un registre chronologique des "Lessons Learned" (leçons apprise
   * Que le **pilier topologique (EGNN)** surpasse un MLP de **~84%** en MAE sur la prédiction de l'énergie de la dynamique moléculaire MD17 (Uracil).
   * Que le **pilier tensoriel (FNO)** se substitue efficacement aux CNN (qui brisent les résolutions continues) pour résoudre l'écoulement des milieux poreux (Darcy Flow) avec des calculs indépendants du maillage.
   * Que la physique réelle ne peut être contrefaite en mémoire. Le téléchargement et le traitement direct des datasets massifs (fichiers `.pt` de Caltech/Zenodo, `.npz` de PyG) sont les seules garants de la validité scientifique de l'IA.
+
+---
+
+## Étape 8 : La Faille du "randn" et la Certification Matérielle (Zero-Stub)
+
+### 1. The "Cache Miss" Fallacy
+*   **Constat** : Lors de notre premier profilage du vHPU sur 15 domaines physiques, nous avons mesuré une accélération globale de 20.20x par rapport à un MLP. Ce test était faussé. Nous avions utilisé `torch.randn()` pour simuler l'état physique, ce qui a provoqué un taux massif de *Cache Miss* dans l'exécution de la méthode traditionnelle (MLP) en virgule flottante, gonflant artificiellement notre métrique de "Virtual Heat".
+*   **Leçon** : L'utilisation de données aléatoires (Stub) pour le profiling matériel est une violation scientifique. Il faut générer une véritable dynamique déterministe (ex: intégration par différences finies d'une onde de choc) pour permettre aux caches L1/L2/L3 du CPU de fonctionner normalement.
+
+### 2. Le Profiling Hardware Strict
+*   **Leçon** : Les fonctions comme `time.perf_counter()` mesurent le thread Python et non l'exécution silicium. L'unique méthode acceptée pour certifier la réduction de "Virtual Heat" est le profiling bas niveau via `torch.autograd.profiler` (ou `psutil` / outils NVidia). En appliquant cette rigueur, nous avons rectifié et certifié l'accélération réelle de l'architecture Poly-Algébrique à **10.86x** (Temps CPU pur).
