@@ -1,0 +1,92 @@
+[
+    {
+        "use_case": "1. Spring Oscillator (1D)",
+        "dimensions": 64,
+        "speedup": 216.66956332488223,
+        "virtual_heat_reduction_pct": 99.53846770877524
+    },
+    {
+        "use_case": "2. 3-Body Gravitation (N-Body)",
+        "dimensions": 512,
+        "speedup": 4.889586790703873,
+        "virtual_heat_reduction_pct": 79.54837406912975
+    },
+    {
+        "use_case": "3. Lorentz Electromagnetism",
+        "dimensions": 256,
+        "speedup": 6.410714242210149,
+        "virtual_heat_reduction_pct": 84.40111410027158
+    },
+    {
+        "use_case": "4. Double Pendulum (Chaos)",
+        "dimensions": 128,
+        "speedup": 5.242662676654848,
+        "virtual_heat_reduction_pct": 80.92572302137768
+    },
+    {
+        "use_case": "5. Maxwell-Boltzmann Gas",
+        "dimensions": 1024,
+        "speedup": 4.367158116602661,
+        "virtual_heat_reduction_pct": 77.10181373561237
+    },
+    {
+        "use_case": "6. Schrodinger Wave (1D QM)",
+        "dimensions": 1024,
+        "speedup": 5.049150874920148,
+        "virtual_heat_reduction_pct": 80.19468966619432
+    },
+    {
+        "use_case": "7. Burgers Shockwave (Fluid)",
+        "dimensions": 4096,
+        "speedup": 7.671541485253021,
+        "virtual_heat_reduction_pct": 86.96481011121043
+    },
+    {
+        "use_case": "8. Relativistic Oscillator",
+        "dimensions": 128,
+        "speedup": 7.254902426492429,
+        "virtual_heat_reduction_pct": 86.21621710102755
+    },
+    {
+        "use_case": "9. D'Alembert Wave",
+        "dimensions": 512,
+        "speedup": 4.850700194118567,
+        "virtual_heat_reduction_pct": 79.38441956869461
+    },
+    {
+        "use_case": "10. FLRW Cosmology",
+        "dimensions": 2048,
+        "speedup": 6.926107748733093,
+        "virtual_heat_reduction_pct": 85.56187636291224
+    },
+    {
+        "use_case": "11. MD17 Molecular Dynamics",
+        "dimensions": 4096,
+        "speedup": 6.245185966442761,
+        "virtual_heat_reduction_pct": 83.98766657432945
+    },
+    {
+        "use_case": "12. QM9 Quantum Chemistry",
+        "dimensions": 1024,
+        "speedup": 4.696016626921063,
+        "virtual_heat_reduction_pct": 78.70535648729914
+    },
+    {
+        "use_case": "13. Darcy Flow (Porous Media)",
+        "dimensions": 4096,
+        "speedup": 6.567466714284209,
+        "virtual_heat_reduction_pct": 84.7734287282339
+    },
+    {
+        "use_case": "14. Navier-Stokes (2D Fluid)",
+        "dimensions": 8192,
+        "speedup": 10.428121330484215,
+        "virtual_heat_reduction_pct": 90.41054502236439
+    },
+    {
+        "use_case": "15. Plasma MHD (Magnetohydrodynamics)",
+        "dimensions": 8192,
+        "speedup": 5.717982453328638,
+        "virtual_heat_reduction_pct": 82.51131394399671
+    }
+]
