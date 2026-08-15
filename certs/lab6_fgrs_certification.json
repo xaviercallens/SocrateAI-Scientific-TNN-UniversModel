@@ -1,0 +1,74 @@
+{
+    "pipeline": "LAB-6 FOURIER-GALERKIN RESONANT SANDBOX",
+    "purpose": "Test-Driven Discovery for Navier-Stokes Millennium Problem",
+    "timestamp": "2026-08-15T18:38:39.833377",
+    "truncation_M": 4,
+    "n_wavevectors": 256,
+    "solver": "Exact Triadic Convolution (no FFT, no aliasing)",
+    "hypotheses_tested": 7,
+    "verdicts": [
+        {
+            "hypothesis": "2D3C Planar Confinement (kz=0)",
+            "sieve": "A",
+            "verdict": "HEURISTIC_PASS",
+            "directive": "AUTHORIZE Formalization Stream to begin Lean 4 proof.",
+            "leakage_energy": 0.0,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "Tilted Plane \u27e8(1,0,0),(0,1,2)\u27e9",
+            "sieve": "A",
+            "verdict": "HEURISTIC_PASS",
+            "directive": "AUTHORIZE Formalization Stream to begin Lean 4 proof.",
+            "leakage_energy": 0.0,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "Even Parity Lock |k|\u00b2 \u2261 0 (mod 2)",
+            "sieve": "A",
+            "verdict": "HEURISTIC_PASS",
+            "directive": "AUTHORIZE Formalization Stream to begin Lean 4 proof.",
+            "leakage_energy": 0.0,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "Axisymmetric (kx=ky=0)",
+            "sieve": "A",
+            "verdict": "HEURISTIC_PASS",
+            "directive": "AUTHORIZE Formalization Stream to begin Lean 4 proof.",
+            "leakage_energy": 0.0,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "NEGATIVE CONTROL: Random 30% Sparse",
+            "sieve": "A",
+            "verdict": "KILLED",
+            "directive": "ABANDON Lean 4 formalization for this constraint.",
+            "leakage_energy": 43120.71893749538,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "NEGATIVE CONTROL: Prime |k|\u00b2 Only",
+            "sieve": "A",
+            "verdict": "KILLED",
+            "directive": "ABANDON Lean 4 formalization for this constraint.",
+            "leakage_energy": 97283.2386707695,
+            "depletion_ratio": null
+        },
+        {
+            "hypothesis": "2D3C Triadic Depletion",
+            "sieve": "B",
+            "verdict": "HEURISTIC_PASS",
+            "directive": "Constraint provides asymptotic depletion. CASCADE STARVED.",
+            "leakage_energy": null,
+            "depletion_ratio": 0.9707035077405448
+        }
+    ],
+    "lean4_authorization": [
+        "2D3C Planar Confinement (kz=0)",
+        "Tilted Plane \u27e8(1,0,0),(0,1,2)\u27e9",
+        "Even Parity Lock |k|\u00b2 \u2261 0 (mod 2)",
+        "Axisymmetric (kx=ky=0)"
+    ],
+    "status": "LAB-6 TIER-B HEURISTIC SIEVE CERTIFIED"
+}
