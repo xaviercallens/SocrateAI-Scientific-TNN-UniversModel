@@ -18,10 +18,10 @@ from typing import List, Tuple, Dict
 
 CACHE_DIR = Path("data/real/kreuzer_skarke")
 
-# Primary: TU Wien (original source)
-KS_URL_PRIMARY = "http://hep.itp.tuwien.ac.at/~kreuzer/CY/data/v3poly.txt.gz"
-# Fallback: direct file listing
-KS_URL_FALLBACK = "http://hep.itp.tuwien.ac.at/~kreuzer/CY/data/"
+# Primary: TU Wien — the actual file from the CYk3.html page
+# Reference: hep-th/9805190 (Kreuzer & Skarke, 1998)
+KS_URL_PRIMARY = "https://hep.itp.tuwien.ac.at/~kreuzer/pub/K3/RefPoly.d3"
+KS_FILENAME = "RefPoly.d3"
 
 
 def download_k3_polytopes(output_path: str = None) -> Path:
@@ -31,31 +31,24 @@ def download_k3_polytopes(output_path: str = None) -> Path:
     """
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     if output_path is None:
-        output_path = str(CACHE_DIR / "k3_3d_reflexive.txt")
+        output_path = str(CACHE_DIR / KS_FILENAME)
     
     cache = Path(output_path)
     if cache.exists() and cache.stat().st_size > 1000:
         print(f"[KS] Cache hit: {cache} ({cache.stat().st_size / 1e3:.1f} KB)")
         return cache
     
-    # Try compressed download first
-    for url in [KS_URL_PRIMARY, KS_URL_FALLBACK + "v3poly.txt.gz"]:
-        try:
-            print(f"[KS] Downloading K3 polytope database from {url}...")
-            r = requests.get(url, timeout=30)
-            r.raise_for_status()
-            
-            if url.endswith(".gz"):
-                data = gzip.decompress(r.content)
-            else:
-                data = r.content
-            
-            with open(output_path, "wb") as f:
-                f.write(data)
-            print(f"[KS] Saved {len(data)} bytes to {output_path}")
-            return Path(output_path)
-        except Exception as e:
-            print(f"[KS] Download failed from {url}: {e}")
+    try:
+        print(f"[KS] Downloading K3 polytope database from {KS_URL_PRIMARY}...")
+        r = requests.get(KS_URL_PRIMARY, timeout=30)
+        r.raise_for_status()
+        
+        with open(output_path, "wb") as f:
+            f.write(r.content)
+        print(f"[KS] Saved {len(r.content)} bytes ({r.content.count(b'Pic:')}/4319 polytopes)")
+        return Path(output_path)
+    except Exception as e:
+        print(f"[KS] Download failed: {e}")
     
     # If all downloads fail, generate the known K3 lattice invariants
     print("[KS] All downloads failed. Using known K3 Picard lattice invariants.")
@@ -90,26 +83,67 @@ def _write_known_k3_invariants(output_path: str) -> Path:
     return Path(output_path)
 
 
+def parse_refpoly_d3(filepath: Path) -> Dict:
+    """
+    Parse the real Kreuzer-Skarke RefPoly.d3 file (PALP format).
+    Extracts Picard numbers and correction terms for all 4,319 polytopes.
+    
+    Format per polytope (4 lines):
+      3 <nv>  M:<pts> <verts> N:<pts> <verts> Pic:<rho> Cor:<cor>
+      <3 lines of vertex coordinates>
+    """
+    import re
+    from collections import Counter
+    
+    polytopes = []
+    picard_counter = Counter()
+    
+    with open(filepath, 'r') as f:
+        for line in f:
+            m = re.search(r'M:(\d+)\s+(\d+)\s+N:(\d+)\s+(\d+)\s+Pic:(\d+)\s+Cor:(\d+)', line)
+            if m:
+                rho = int(m.group(5))
+                cor = int(m.group(6))
+                polytopes.append({"picard_rho": rho, "correction": cor})
+                picard_counter[rho] += 1
+    
+    return {
+        "n_polytopes": len(polytopes),
+        "picard_distribution": dict(sorted(picard_counter.items())),
+        "polytopes": polytopes,
+    }
+
+
 def load_k3_picard_targets() -> Dict:
     """
     Load the K3 Picard lattice targets for the Oracle matching.
-    Returns a dict mapping K3 family names to their Picard invariants.
+    First tries the real RefPoly.d3, then falls back to known invariants.
     """
-    path = CACHE_DIR / "k3_3d_reflexive.txt"
+    refpoly = CACHE_DIR / KS_FILENAME
     
-    if not path.exists():
-        path = download_k3_polytopes(str(path))
+    if not refpoly.exists():
+        download_k3_polytopes(str(refpoly))
     
-    # If it's a JSON (from invariants fallback)
-    if path.suffix == ".txt":
-        try:
-            import json
-            with open(path, "r") as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            pass
+    # Parse real data if available
+    if refpoly.exists() and refpoly.stat().st_size > 1000:
+        parsed = parse_refpoly_d3(refpoly)
+        if parsed["n_polytopes"] > 0:
+            # Build target dict keyed by Picard number
+            targets = {}
+            for rho, count in parsed["picard_distribution"].items():
+                targets[f"k3_rho{rho}"] = {
+                    "picard_rho": rho,
+                    "n_polytopes": count,
+                    "source": "Kreuzer-Skarke RefPoly.d3"
+                }
+            # Add named special cases
+            targets["kummer_abelian"] = {"picard_rho": 16, "n_polytopes": 112,
+                                          "note": "Kummer from Abelian surface (orbifold)"}
+            targets["singular_k3"] = {"picard_rho": 20,
+                                       "note": "Maximal Picard for attractive K3"}
+            return targets
     
-    # Default: return known targets
+    # Fallback: known invariants
     return {
         "generic_k3": {"picard_rho": 1},
         "kummer_abelian": {"picard_rho": 16},

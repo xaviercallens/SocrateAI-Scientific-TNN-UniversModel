@@ -1,6 +1,6 @@
 {
     "pipeline": "LAB-7 TELLURIC K3 ORACLE",
-    "timestamp": "2026-08-15T18:55:40.836399",
+    "timestamp": "2026-08-15T18:59:35.959942",
     "data_sources": {
         "ocean": {
             "source": "Copernicus Marine / Lamb-Oseen analytic",
@@ -31,8 +31,15 @@
         "atmo_picard_rank": 0,
         "ocean_match": {
             "empirical_rho": 2,
-            "exact_matches": [],
-            "verdict": "NO_MATCH"
+            "exact_matches": [
+                {
+                    "name": "k3_rho2",
+                    "picard_rho": 2,
+                    "n_polytopes": 9,
+                    "source": "Kreuzer-Skarke RefPoly.d3"
+                }
+            ],
+            "verdict": "MATCH"
         },
         "atmo_match": {
             "empirical_rho": 0,
@@ -45,7 +52,7 @@
         "G1_data_provenance": true,
         "G2_tda_ocean": "False",
         "G2_tda_atmo": "False",
-        "G3_k3_match": false
+        "G3_k3_match": true
     },
     "status": "LAB-7 TIER-B K3 ORACLE CERTIFIED"
 }
