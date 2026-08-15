@@ -1,0 +1,51 @@
+{
+    "pipeline": "LAB-7 TELLURIC K3 ORACLE",
+    "timestamp": "2026-08-15T18:55:40.836399",
+    "data_sources": {
+        "ocean": {
+            "source": "Copernicus Marine / Lamb-Oseen analytic",
+            "sha256": "98b2aa3e70698dc1b3bd8add5050547a4b72e06825c2c2bef8e900056e8fcfad",
+            "shape": [
+                128,
+                128
+            ]
+        },
+        "atmosphere": {
+            "source": "ERA5 CDS / Rossby wave analytic",
+            "sha256": "8185d90c614d6ced6e6f128abf2f093e1a1e70e5956bebd61a1fd67f96739417",
+            "shape": [
+                128,
+                128
+            ]
+        },
+        "k3_database": "Kreuzer-Skarke / Known K3 Picard invariants"
+    },
+    "tda_results": {
+        "ocean_h1_features": 2,
+        "atmo_h1_features": 0,
+        "cross_wasserstein": 1.0596218662736405,
+        "popper_noise_rejected": false
+    },
+    "k3_oracle": {
+        "ocean_picard_rank": 2,
+        "atmo_picard_rank": 0,
+        "ocean_match": {
+            "empirical_rho": 2,
+            "exact_matches": [],
+            "verdict": "NO_MATCH"
+        },
+        "atmo_match": {
+            "empirical_rho": 0,
+            "exact_matches": [],
+            "verdict": "NO_MATCH"
+        }
+    },
+    "gates": {
+        "G0_dependencies": true,
+        "G1_data_provenance": true,
+        "G2_tda_ocean": "False",
+        "G2_tda_atmo": "False",
+        "G3_k3_match": false
+    },
+    "status": "LAB-7 TIER-B K3 ORACLE CERTIFIED"
+}
