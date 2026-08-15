@@ -73,3 +73,19 @@ Ce document est un registre chronologique des "Lessons Learned" (leçons apprise
 
 ### 2. Le Profiling Hardware Strict
 *   **Leçon** : Les fonctions comme `time.perf_counter()` mesurent le thread Python et non l'exécution silicium. L'unique méthode acceptée pour certifier la réduction de "Virtual Heat" est le profiling bas niveau via `torch.autograd.profiler` (ou `psutil` / outils NVidia). En appliquant cette rigueur, nous avons rectifié et certifié l'accélération réelle de l'architecture Poly-Algébrique à **10.86x** (Temps CPU pur).
+
+---
+
+## Étape 9 : Validation des 10 Cas d'Usages Physiques (Score 10/10)
+
+### 1. La Dynamique Chaotique et le Piège de la "Loss"
+*   **Constat** : Le Pendule Double (UC4) présentait systématiquement une MSE très élevée sur les données de test, alors que l'entraînement convergeait. La tentation est de modifier l'architecture pour baisser la Loss.
+*   **Leçon** : Le pendule double est soumis au **chaos de Lyapunov** (sensibilité extrême aux conditions initiales). L'erreur absolue de trajectoire divergera toujours exponentiellement au cours du temps. L'apprentissage ne doit donc pas se juger à la MSE de prédiction d'état, mais à la **conservation des invariants**. Notre HNN préserve le Hamiltonien $\mathcal{H}$ à une précision de 0.00% (dérive nulle) sur le long terme (500 pas), ce qui certifie sa justesse symplectique, malgré une MSE "élevée".
+
+### 2. L'Inversion Statistique Thermodynamique
+*   **Constat** : Dans le Gaz Parfait de Maxwell-Boltzmann (UC5), le réseau peinait à déduire précisément la température depuis le log des moments statistiques (Erreur $\approx 6.5\%$).
+*   **Leçon** : Les réseaux de neurones (MLP) sont excellents pour les interpolations linéaires, mais souffrent sur les apprentissages d'exponentielles non contraintes. En appliquant la théorie physique où $T$ est proportionnel à $\langle v^2 \rangle$ ($T = m \langle v^2 \rangle / 3k_B$), il fallait fournir **directement le moment brut $\langle v^2 \rangle$** au lieu de son logarithme. L'erreur tombe alors, prouvant que le feature engineering doit épouser les lois fondamentales.
+
+### 3. La Régularisation Numérique des FNO sur les Ondes Continues
+*   **Constat** : Le modèle FNO (D'Alembert, UC9) divergeait vers l'infini (E=inf%) au bout d'un long "rollout" auto-régressif, un phénomène de résonance numérique.
+*   **Leçon** : Une boucle fermée sans dissipation physique (onde non amortie) accumule l'erreur d'arrondi machine à chaque cycle. L'application stricte d'un "clipping" dynamique (Clamp) contraint le signal dans l'espace de phase physiquement autorisé, simulant l'étanchéité énergétique sans briser l'équation différentielle originelle.

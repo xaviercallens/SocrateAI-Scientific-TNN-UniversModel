@@ -119,17 +119,20 @@ def SymplecticConservationHook(model, q0, p0, edges, batch_index, mass, dt=1e-3)
          return False
 
 if __name__ == "__main__":
-    # Test Synthétique : Système à 2 corps (N=2)
+    # Zero-Stub Policy: Deterministic 2-body spring oscillator initial conditions
     N = 2
     print("--- Initialisation du Thermodynamic Predictor (2-Corps) ---")
+    print("    [Zero-Stub] Utilisation de conditions initiales déterministes (ressort)")
     model = TNNThermodynamicPredictor()
     
-    # Création des tenseurs initiaux (q, p)
-    q0 = torch.randn(N, 3) # Positions aléatoires
-    p0 = torch.randn(N, 3) # Momentums aléatoires
-    mass = torch.ones(N, 1) # Masses unitaires
+    # Deterministic initial conditions: two masses on a spring axis
+    # Body 1 at (+1, 0, 0), Body 2 at (-1, 0, 0)
+    q0 = torch.tensor([[1.0, 0.0, 0.0], [-1.0, 0.0, 0.0]])
+    # Momenta: Body 1 moving up, Body 2 moving down (oscillatory)
+    p0 = torch.tensor([[0.0, 0.5, 0.0], [0.0, -0.5, 0.0]])
+    mass = torch.ones(N, 1)  # Masses unitaires
     
-    # Graphe fully connected
+    # Graphe fully connected (2-corps)
     edges = torch.tensor([[0, 1], [1, 0]], dtype=torch.long)
     batch_index = torch.zeros(N, dtype=torch.long)
     

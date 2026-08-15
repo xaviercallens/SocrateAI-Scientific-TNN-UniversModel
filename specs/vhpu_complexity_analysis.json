@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-15T06:29:01.001023+00:00",
+  "framing": "ALGORITHMIC_COMPLEXITY_REDUCTION_NOT_HARDWARE_SPEEDUP",
+  "resolution": 4096,
+  "batch_size": 256,
+  "mlp_vs_discrete": {
+    "baseline_flops_per_sample": 4325376,
+    "discrete_flops_per_sample": 4096,
+    "algorithmic_reduction_ratio": 1056.0,
+    "total_flops_saved_per_batch": 1106247680,
+    "claim_type": "ALGORITHMIC (FLOPs avoided, NOT wall-clock speedup)",
+    "hardware_note": "IF implemented on native discrete topological hardware, O(N) would replace O(N*H^2) GEMMs. Python torch.roll is not that hardware."
+  },
+  "rescnn_vs_discrete": {
+    "baseline_flops_per_sample": 671088640,
+    "discrete_flops_per_sample": 4096,
+    "algorithmic_reduction_ratio": 163840.0,
+    "total_flops_saved_per_batch": 171797643264,
+    "claim_type": "ALGORITHMIC (FLOPs avoided, NOT wall-clock speedup)",
+    "hardware_note": "IF implemented on native discrete topological hardware, O(N) would replace O(N*H^2) GEMMs. Python torch.roll is not that hardware."
+  },
+  "gradient_analysis": {
+    "mlp_explodes_at_shock": true,
+    "rescnn_explodes_at_shock": false,
+    "discrete_has_no_gradient": true
+  },
+  "honest_speedup_claim": "For 1D advective shockwaves with known shift symmetry: 1056x FLOPs avoided (algorithmic). NOT a hardware benchmark."
+}

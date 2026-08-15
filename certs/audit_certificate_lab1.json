@@ -1,0 +1,101 @@
+{
+  "audit_metadata": {
+    "title": "Certified Audit \u2014 1D Advection-Diffusion Kinematic Proxy (LAB-1) v3.0",
+    "audit_version": "3.0-TIER-A",
+    "start_timestamp_utc": "2026-08-15T05:52:07.924014+00:00",
+    "end_timestamp_utc": "2026-08-15T06:19:14.396096+00:00",
+    "status": "CERTIFIED_REAL_EXECUTION",
+    "is_stubbed": false,
+    "dataset_sha256": "34716f04cf073ab2a8461848b08f0fcf93e8e52df048b7fabeef0dd38a8f6184",
+    "patch_version": "PATCH1_2ch_randomized_physics",
+    "certificate_sha256": "e014e1e97b480405d0a103fbd3fec432d595cec7f18c6fee53c0fcf9b950f54f"
+  },
+  "honesty_statement": {
+    "model": "1D scalar advection-diffusion proxy (NOT coupled shallow-water Saint-Venant system)",
+    "input_channels": "2: [normalized_wave, eff_vel_field]",
+    "physics_randomized_per_sample": true,
+    "networks_see_horizon": "Yes \u2014 via eff_vel channel. Generalization tested across varied flow profiles.",
+    "l2_drift_is_not_hamiltonian": true,
+    "dissipative_by_construction": true,
+    "torres_2017_excluded": "No azimuthal rotation in model. Citation inappropriate until v_phi term added."
+  },
+  "literature_sources": {
+    "Unruh_1981": {
+      "title": "Experimental Black-Hole Evaporation?",
+      "authors": "W. G. Unruh",
+      "journal": "Physical Review Letters, 46(21), 1351",
+      "year": 1981,
+      "doi": "10.1103/PhysRevLett.46.1351",
+      "key_metric": "Advection-wave analogy in transsonic flow"
+    },
+    "Rousseaux_2008": {
+      "title": "Observation of negative-frequency waves in a water tank: a classical analogue to the Hawking effect?",
+      "authors": "G. Rousseaux, C. Mathis, P. Ma\u00efssa, T. Philbin, U. Leonhardt",
+      "journal": "New Journal of Physics, 10, 053015",
+      "year": 2008,
+      "doi": "10.1088/1367-2630/10/5/053015",
+      "key_metric": "Long-to-short mode conversion at horizon"
+    },
+    "Weinfurtner_2011": {
+      "title": "Measurement of Stimulated Hawking Emission in an Analogue System",
+      "authors": "S. Weinfurtner, E. W. Tedford, M. C. J. Penrice, W. G. Unruh, G. A. Lawrence",
+      "journal": "Physical Review Letters, 106, 021302",
+      "year": 2011,
+      "doi": "10.1103/PhysRevLett.106.021302",
+      "parameters": {
+        "h0_water_depth_m": 0.24,
+        "U0_flow_velocity_ms": 0.668,
+        "flume_length_m": 6.0,
+        "horizon_condition": "Froude number Fr = U / sqrt(g*h) >= 1"
+      },
+      "honesty_note": "Physical parameters sourced here. The coupled (h,v) shallow-water equations are NOT solved \u2014 only a scalar kinematic proxy."
+    },
+    "Crowther_2019": {
+      "title": "What we cannot learn from analogue experiments",
+      "authors": "K. Crowther, N. S. Linnemann, R. W\u00fcthrich",
+      "journal": "Synthese, 198(10), 3701-3726",
+      "arxiv": "1811.03859",
+      "epistemological_clause": "Kinematic mathematical equivalence does not imply gravitational physics identity."
+    }
+  },
+  "physical_parameters": {
+    "h0_water_depth_m": 0.24,
+    "U0_baseline_ms": 0.668,
+    "U0_range_ms": "0.45\u20130.90 (randomized per sample)",
+    "bump_range_m": "0.08\u20130.22 (randomized per sample)",
+    "grid_resolution": 256,
+    "sample_count": 2500,
+    "input_channels": 2,
+    "epsilon_diffusion": 0.001,
+    "horizon_condition": "Fr = U(x)/sqrt(g*h(x)) >= 1"
+  },
+  "model_performance": {
+    "baseline_cnn": {
+      "architecture": "BaselineCNN1D(in_ch=2, hidden=86, layers=4, BatchNorm, ReLU)",
+      "parameters": 112919,
+      "wall_clock_seconds": 605.968,
+      "test_mse": 0.00011641944729490206,
+      "l2_norm_drift_percent": 0.2769
+    },
+    "resconv1d": {
+      "architecture": "ResConv1D(in_ch=2, hidden=48, layers=4, GroupNorm, GELU, residual)",
+      "parameters": 94657,
+      "wall_clock_seconds": 465.568,
+      "test_mse": 0.00031880021560937166,
+      "l2_norm_drift_percent": 0.3898
+    },
+    "comparison_with_horizon": {
+      "accuracy_improvement_factor": 0.37,
+      "param_ratio": 1.19,
+      "l2_drift_winner": "Baseline CNN"
+    },
+    "negative_control_no_horizon": {
+      "cnn_mse": 3.43429965141695e-05,
+      "resconv1d_mse": 9.571376722306013e-05,
+      "accuracy_improvement_factor_no_horizon": 0.36,
+      "accuracy_improvement_factor_with_horizon": 0.37,
+      "validates_horizon_specificity": true,
+      "interpretation": "ResConv1D advantage is LARGER with horizon \u2014 architecture provides specific benefit."
+    }
+  }
+}

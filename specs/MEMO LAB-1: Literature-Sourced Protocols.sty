@@ -1,0 +1,210 @@
+MEMO LAB-1: Literature-Sourced Protocols
+Analogue Gravity in a Bathtub, and Fiber-Optic Wave Analogues
+
+Statut: complement to MEMO LAB-0, based on a targeted literature review.
+
+Main finding: an entire scientific field -- "analogue gravity" (Weinfurtner,
+Nottingham; Unruh 1981; Steinhauer) -- does exactly what was asked: recreate,
+in a water tank, a horizon, an ergoregion, a mechanism of no-return, with a
+modest university-lab budget and published protocols. This is closer to P4
+(bounce / no-collapse) and to the cascade than any experiment in the previous
+memo, and the literature is directly reusable.
+
+--------------------------------------------------------------------------
+1. Analogue gravity in a tank: what it is and why it is your experiment
+--------------------------------------------------------------------------
+
+The physical principle, literature-verified. Unruh (1981) showed that a flow
+whose speed locally exceeds the wave speed creates a horizon: beyond that
+point, a wave propagating against the current can no longer travel back --
+exactly the causal structure of a black-hole horizon, inside a fluid. The
+Weinfurtner group (Nottingham) realizes this with a draining vortex -- water
+escaping through the bottom of a tank while rotating, like a bathtub being
+emptied -- creating a sonic horizon and an ergoregion, measured by laser
+surface profilometry. A simpler, earlier variant (Rousseaux et al. 2008;
+Weinfurtner et al. 2011): a flow channel, a streamlined obstacle creating a
+region of high velocity, and an underwater speaker injecting waves against
+the current -- the long upstream wave is blocked and converted into a short
+wave, the classical-side signature of stimulated Hawking emission.
+
+Why this is closer to the programme than diffraction or tube acoustics. This
+is not merely an instance of P1 -- it is a direct instance of P4: the
+mechanism by which a region of a wave system becomes inaccessible because a
+flow speed exceeds a characteristic wave speed is structurally the same
+mechanism that, in the program's formalism, produces the bounce below the
+self-dual scale. The turbulent cascade in the dyadic model also shares direct
+historical lineage with this field: both concern wave propagation in an
+inhomogeneous flow.
+
+--------------------------------------------------------------------------
+2. Reusable low-tech protocol -- kitchen-bin draining vortex
+--------------------------------------------------------------------------
+
+Materials: large transparent bin (~40x30 cm plastic storage box), a drain
+hole at the center with an adjustable plug, an aquarium pump to recirculate
+(close the loop and hold a stable water level), surface tracer powder (light
+flour or glitter), a laser sheet (pointer + glass rod as in MANIP E from
+LAB-0), a phone in slow motion filming from above.
+
+Pre-registered prediction, simplified for a home budget: radial flow speed
+increases toward the center (mass conservation, v(r) ~ 1/r to first order);
+there must exist a radius r_h where v(r_h) equals the propagation speed of
+shallow-water surface waves (c ~ sqrt(g*h)). Beyond r_h toward the center, a
+wave packet launched from outside toward the center must no longer be able
+to escape back out.
+
+Observable without heavy instrumentation: perturb the surface with a drop or
+a light tap at various distances from the center, film, and identify the
+distance below which the ripple can no longer travel back against the flow
+-- a direct, visible measurement of r_h, the horizon.
+
+Mandatory negative control: stop the drain (no radial flow) -> no no-return
+distance should appear; ripples must propagate freely in every direction.
+
+What this experiment does not claim: it does not simulate any real
+gravitational physics -- it is an equation-level analogy, as the literature
+itself states plainly (see the cautionary reference below), not a gravity
+experiment. What it genuinely instantiates is a wave-horizon mechanism in an
+inhomogeneous flow, which is exactly the level of abstraction the programme
+shares with this field.
+
+--------------------------------------------------------------------------
+3. Extension with an underwater speaker (closer still to Weinfurtner 2011)
+--------------------------------------------------------------------------
+
+Add a small waterproof transducer (or a speaker sealed in a plastic bag)
+placed upstream of the obstacle/vortex, injecting a wave of known frequency
+against the current. Prediction: below a critical frequency, the upstream
+wave is blocked and reconverted; above it, it passes through. This
+reproduces in miniature the long-to-short mode conversion setup of Rousseaux
+et al. (2008) -- feasible with a longer channel rather than a simple
+draining vortex (a length of PVC guttering cut lengthwise works).
+
+--------------------------------------------------------------------------
+4. Optical fiber: what the literature actually says is feasible at your scale
+--------------------------------------------------------------------------
+
+A recent review (arXiv:2512.15695, "An introduction to nonlinear fiber
+optics and optical analogues to gravitational phenomena") confirms that the
+horizon/Hawking analogy also exists in nonlinear fiber optics, but at an
+equipment level (ultrashort pulses, controlled Kerr nonlinearity) out of
+reach of a cellar lab. The reasonable version for you remains the one
+already proposed in MANIP D+ of LAB-0: a closed POF fiber loop as a delay
+line testing P5, without claiming the gravitational analogy. I do not
+recommend pushing further on fiber for now -- the effort/result ratio tips
+clearly toward the water tank.
+
+--------------------------------------------------------------------------
+5. A warning from the literature itself -- cite this if you publish
+--------------------------------------------------------------------------
+
+A foundational philosophy-of-physics paper ("What we cannot learn from
+analogue experiments", arXiv:1811.03859) is explicit: the source system
+(water) and the target system (a real gravitational horizon) share an
+equation, not a physics -- the analogy is mathematical (both obey a
+Klein-Gordon-type equation on an effective metric), and licenses no
+inference about real gravity. This is exactly the honesty clause the
+programme already applies to T-duality. Any communication about this
+experiment must carry the same caution: you are observing a wave-horizon
+mechanism, not a black hole.
+
+--------------------------------------------------------------------------
+6. Quick comparison with the previous memo
+--------------------------------------------------------------------------
+
+Experiment              | Principle          | Closeness to core   | Budget
+Ising (LAB-0, F)        | P1, fixed point    | strong (kernel-checked prediction) | 0 EUR
+Draining vortex (here)  | P4, horizon/no-return | strongest -- structural mechanism, not just a bound | ~15 EUR (bin + pump)
+Acoustic cavity (LAB-0, D) | P5, closure      | strong               | ~15 EUR
+Acousto-optic (LAB-0, C)| P1+P3+P5           | moderate, uncertain  | ~30 EUR
+
+Recommendation: insert the draining-vortex experiment as position 2 in the
+previous memo's order, right after Ising -- it is the best literature-
+documented experiment among all proposals, backed by an entire research
+field, and it is the only one directly testing P4.
+
+--------------------------------------------------------------------------
+7. Actions
+--------------------------------------------------------------------------
+
+1. LL-6 pass required before formal citation: Unruh 1981 (PRL 46, 1351);
+   Weinfurtner et al. 2011 (PRL 106, 021302); Rousseaux et al. 2008 (NJP 10,
+   053015); Torres et al. 2017 (Nature Physics 13, 833) -- all located by
+   this search pass, full retrieval still needed.
+2. Build the draining-vortex bin before the speaker extension (Section 3),
+   to calibrate r_h visually first.
+3. Attach the warning clause (Section 5) to any write-up of this experiment,
+   in the same spirit as the programme's existing T-duality quarantine.
+
+--------------------------------------------------------------------------
+8. LAB-1 Extension: Holographic Instantiations and Scale Couplings (FR/EN)
+--------------------------------------------------------------------------
+
+[Français]
+MÉMO LAB-1 : Instanciations Holographiques et Couplages d'Échelles (Extension)
+
+11. MANIP G — Corrélateur Optique 4f : L'espace Dual manipulable (P1 poussé)
+- Principe testé : L'auto-dualité spatiale. L'espace mathématique des impulsions/fréquences (le dual) coexiste physiquement avec l'espace géométrique. Une modification ponctuelle dans le dual génère une altération continue globale dans le réel.
+- Matériel : Laser de récup, grille très fine (moustiquaire), 2 lentilles convergentes identiques (~2€), un cheveu tendu.
+- Protocole : Le laser éclaire la grille. Lentille 1 fait une TF 2D (plan de Fourier à distance f). Lentille 2 refait la TF inverse.
+- Prédiction pré-enregistrée : Placer le cheveu au centre du plan de Fourier (bloque fréquence nulle / IR). Sur le mur, le fond continu disparaît, seuls les contours brillent (filtrage passe-haut).
+- Contrôle négatif : Cheveu hors du plan dual (avant/après) = simple ombre portée.
+- Leçon : L'information structurelle est totalement délocalisée dans chaque point de l'espace dual. Vous manipulez le cœur de l'information holographique avec les mains.
+
+12. MANIP H — La Cuve de Laplace : Analogue AdS/CFT (Holographie Bord/Volume)
+- Principe testé : Correspondance holographique d'état. L'état entier d'un volume continu (le Bulk) est mathématiquement épuisé et dicté par sa frontière (Boundary).
+- Matériel : Bac plat, eau faiblement conductrice, fil de cuivre en paroi, ADC ADS1115 + Pi.
+- Prédiction pré-enregistrée : Potentiels appliqués sur la frontière. Le volume obéit à Laplace (ΔV=0). Chaque point intérieur est la moyenne intégrale de son périmètre (cartographie 10x10).
+- Contrôle négatif : 3ème électrode (alimentée) au centre du bac. L'équation devient Poisson (ΔV=ρ), le volume a sa propre source d'information -> la stricte correspondance bord-volume s'effondre.
+- Leçon : Le continu du volume n'invente rien, il relaxe pour relier les bords de manière optimale. Matérialisation géométrique classique du principe holographique.
+
+13. MANIP I — Moiré Macroscopique : L'Émergence d'Échelle (Couplage UV/IR)
+- Principe testé : Divergence holographique d'échelle. Couplage ultra-microscopique (UV) engendre l'émergence d'une géométrie macro (IR).
+- Matériel : 2 feuilles transparentes avec réseau de lignes (pas d), bloc optique rotatif (vieux lecteur CD) pour contrôle angulaire, caméra Pi.
+- Prédiction pré-enregistrée : L'angle de rotation θ génère un Moiré de pas Λ = d / (2 sin(θ/2)). En limite IR (θ→0), Λ diverge vers l'infini (droite stricte Λ vs 1/θ).
+- Contrôle négatif : θ=90° (orthogonal) -> l'émergence de l'échelle macro s'annihile, redevenant un quadrillage UV pur.
+- Leçon : Analogue mécanique du "Twisted Bilayer Graphene". L'échelle macro n'est pas fondamentale ; c'est un artefact émergent du couplage de structures plus fines.
+
+14. MANIP J — La Loi d'Aire sur le Raspberry (Le check théorique de P1)
+- Principe testé : Loi d'Aire holographique (Ryu-Takayanagi / Bekenstein). L'information croît avec la surface frontière, pas le volume.
+- Matériel : Raspberry Pi (expérience logicielle pure, suite Manip F).
+- Prédiction pré-enregistrée : Monte-Carlo Ising, au point d'auto-dualité prouvé en Lean (Kc = 0.44069). L'entropie d'intrication classique d'un bloc LxL (ou corrélations au bord) croît proportionnellement au périmètre L, non à l'aire L^2.
+- Contrôle négatif : Haute température T ≫ Tc -> perte de criticalité auto-duale. La thermodynamique classique reprend le dessus, les fluctuations scalent en L^2 (volume).
+
+Méta-instrumentation : Automatisation de la Discipline
+Pour prévenir tout biais : un script "pre_commit_run.py" verrouille matériellement I2C et caméra. Pour lancer une acquisition, il demande 2 inputs : [Paramètre varié] et [Prédiction algébrique]. Prend la date NTP, génère un hash SHA-256 local, et SEULEMENT ALORS déverrouille les capteurs.
+
+
+[English]
+LAB-1 MEMO: Holographic Instantiations and Scale Couplings (Extension)
+
+11. MANIP G — 4f Optical Correlator: Manipulable Dual Space (P1 extended)
+- Principle: Spatial self-duality. The mathematical momentum/frequency space (the dual) physically coexists with geometric space. A discrete modification in the dual generates a global continuous alteration in reality.
+- Materials: Salvaged laser, fine grid (mosquito net), 2 cheap converging lenses (~2€), a single stretched hair.
+- Protocol: Laser illuminates grid. Lens 1 performs 2D Fourier Transform (Fourier plane at distance f). Lens 2 performs inverse FT.
+- Pre-registered Prediction: Place hair exactly in the central Fourier plane (blocking zero spatial frequency / IR component). On the wall, the continuous background disappears, only grid contours shine (high-pass filter).
+- Negative Control: Hair outside the dual plane yields a simple shadow.
+- Lesson: Structural information is completely delocalized in dual space. You manipulate the core of holographic information with your hands.
+
+12. MANIP H — Laplace Tank: AdS/CFT Analogue (Bulk/Boundary Holography)
+- Principle: Holographic state correspondence. The continuous Bulk state is mathematically exhausted by its Boundary constraints.
+- Materials: Flat tray, slightly conductive water, copper wire along the wall, Pi + ADS1115 ADC.
+- Pre-registered Prediction: Apply DC potentials to boundary sections. The bulk ohmic volume obeys Laplace's equation (ΔV=0). Any interior point equals the integral average of its perimeter (10x10 mapping).
+- Negative Control: Introduce a 3rd powered electrode in the center (Poisson equation, ΔV=ρ). The volume now has its own information source -> strict bulk-boundary correspondence collapses.
+- Lesson: The continuum "invents" nothing; it optimally relaxes to connect boundaries. Classical geometric materialization of the holographic principle.
+
+13. MANIP I — Macroscopic Moiré: Scale Emergence (UV/IR Coupling)
+- Principle: Holographic scale divergence. How UV coupling generates macroscopic IR geometry.
+- Materials: 2 transparent sheets with line grating (pitch d), rotary optic block (old CD drive), Pi camera.
+- Pre-registered Prediction: Rotation angle θ generates a macroscopic Moiré pitch Λ = d / (2 sin(θ/2)). In IR limit (θ→0), macroscopic spatial scale diverges to infinity (straight line Λ vs 1/θ).
+- Negative Control: θ=90° (perfectly orthogonal) -> macroscopic scale emergence annihilates; returns to pure dead UV grid.
+- Lesson: Mechanical analogue of Twisted Bilayer Graphene. Macroscopic scale is not fundamental; it is an emergent artifact projected by fine structure coupling.
+
+14. MANIP J — Area Law on Raspberry Pi (Theoretical Check of P1)
+- Principle: Holographic Area Law (Ryu-Takayanagi / Bekenstein limit). Relevant information grows with boundary surface, not volume.
+- Materials: Raspberry Pi (software experiment, extending Manip F).
+- Pre-registered Prediction: In Ising Monte-Carlo at the self-dual point proven in Lean (Kc = 0.44069). The classical entanglement entropy (or boundary correlations) of an LxL block grows with perimeter L, not area L^2.
+- Negative Control: High temperature T ≫ Tc -> loss of self-dual criticality. Classical thermodynamics dominates, fluctuations scale with volume (L^2).
+
+Meta-Instrumentation: Discipline Automation (pre_commit_run.py)
+To prevent bias (even unconscious): a script physically locks the I2C and Camera buses. To start an acquisition, it requires two keyboard inputs: [Varied Parameter] and [Algebraic Prediction]. It fetches NTP time, generates a local SHA-256 meta-hash, and ONLY THEN unlocks the sensors.

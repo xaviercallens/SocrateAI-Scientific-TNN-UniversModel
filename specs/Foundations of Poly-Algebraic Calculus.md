@@ -243,7 +243,7 @@ class PolyAlgebraicSolver:
         self.init = initial_state
         self.target = target_state
 
-    def solve_stabilization_rule() -> str:
+    def solve_stabilization_rule(self) -> str:
         """
         Executes Rulial Inversion to deduce the structural stabilization rule.
         """

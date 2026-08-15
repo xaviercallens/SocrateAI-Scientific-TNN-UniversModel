@@ -1,0 +1,94 @@
+{
+    "pipeline": "LAB-5 PRODUCTION TDA PIPELINE",
+    "timestamp": "2026-08-15T16:58:53.272299",
+    "global_seed": 2026,
+    "topological_gap_threshold": 0.15,
+    "popper_falsification_tests": {
+        "test_a_null_noise_rejection": {
+            "status": "PASS",
+            "distance": 2608.4504717377386
+        },
+        "test_b_sphere_decoy_rejection": {
+            "status": "PASS",
+            "distance": 1.8379283996282871
+        },
+        "test_c_isometry_rupture_detection": {
+            "status": "PASS",
+            "distance": 21.50696151045156
+        }
+    },
+    "all_falsifications_passed": true,
+    "data_provenance_records": [
+        {
+            "id": "TARGET_P4_TORUS",
+            "source": "Mathematical_Proxy_Torus",
+            "raw_hash": "aee22ae61b446edef6e99725c8e7293094fc0010951e5d3dbc8df27efdf94b4e",
+            "normalized_hash": "0f931a5b76a388b82c45b7e4322e1b354adca379c106d42a2a034dc29c2fae1d",
+            "barcode_hash": "f01b85a342cc29286f5e4d0548cb097dfb3cfbec18eb6d2a4dde59eeeb4b3223"
+        },
+        {
+            "id": "FALSIFICATION_A_WHITE_NOISE",
+            "source": "Gaussian_Noise_Null_Hypothesis",
+            "raw_hash": "cd9d800be0ef0dae74b971a08a06668c4709ad66ccd619b5678840406e0aaf8c",
+            "normalized_hash": "a16e641cab5436870aadc5fe132ad56582ff7c6af40bc1866248e6475e294fc8",
+            "barcode_hash": "eb55572af44d06053540c67f712d647b6e951a26cdc54c61fd1d0148be6f1b79"
+        },
+        {
+            "id": "FALSIFICATION_B_SPHERE_S2",
+            "source": "Hollow_Sphere_Decoy_S2",
+            "raw_hash": "abd1b26d4f6de4196a29064068aa3f23cb92f5c22fa3e657109b8c51f2f9a63c",
+            "normalized_hash": "efd578553f887eefbf90f6ceaf31ea2003c5a6455906e7812c9a8cdc1cc66136",
+            "barcode_hash": "c8738aa2c55504ada491de57df7b92a18a35f8cd1bdbd88f3145fb7974ee57d0"
+        },
+        {
+            "id": "FALSIFICATION_C_ANISOTROPIC_STRETCH",
+            "source": "Isometry_Rupture_Z_Stretch",
+            "raw_hash": "7014540a0243199b0249f95e656a62ad1bc319b01ea868c7e505da478162f7ba",
+            "normalized_hash": "6ca8dd10853fe309eb21305dde50c23e053da3a5f712f2c2829d97e9c0d152fc",
+            "barcode_hash": "466fd4f163071d49d0d2c38f9ca9d3a4638ce6b65461cf2790939634c00baf06"
+        },
+        {
+            "id": "JHTDB_Vortex_00",
+            "source": "Navier_Stokes_Vorticity",
+            "raw_hash": "c1c0f35d7d8c3527e6733012e034103b2ec44672836843e9b57ff269d10f6fb5",
+            "normalized_hash": "01d0cc9850c91c624422d94e33664882b0beb7b37cad53c6a02b16e8a5af2d0d",
+            "barcode_hash": "78158b4fc5cb6863757e0c7542210dc31e68231a5876ad516a0f0eaf5eccbb93"
+        },
+        {
+            "id": "JHTDB_Vortex_01",
+            "source": "Navier_Stokes_Vorticity",
+            "raw_hash": "1239df46d74271b55a01c78da9cdeed15aee9dc69ccd81b5872644a7e60ee7e4",
+            "normalized_hash": "34cc40e18cab93ec5c8ee873754bd043dd5bf758eee890e97e7c43eb457bbfa7",
+            "barcode_hash": "e7bb0e0a2278096ce6d15afbf888aebd7475ed9b285fed05b259a5a4290d18f2"
+        },
+        {
+            "id": "JHTDB_Vortex_02",
+            "source": "Navier_Stokes_Vorticity",
+            "raw_hash": "a368cdca21dcc67dd82e7861d4029571307fd62b64c94d43d579e5aecbdb647c",
+            "normalized_hash": "88647cc255f3d86280a1720f6a747ff36ae88872e7aa034c2065ae4f9bdeeb8f",
+            "barcode_hash": "77aa10c87a7a98821cd7acd6199b699af07ab7093148c86593610e23a4d07bfb"
+        },
+        {
+            "id": "Illustris_Subhalo_00",
+            "source": "Cosmological_Dark_Matter",
+            "raw_hash": "e7ffb296aae976aad103650adf4c527593027989db4846be61e9498cf2e9a5fc",
+            "normalized_hash": "970e7d0e3ca7206d6b6f6f6612cd9686788a76c9cbe2474858d4bd5c265b259c",
+            "barcode_hash": "bd708a2e8a21bf963cc439d23837bad558082d8d630e0090d71c09c8334af23b"
+        },
+        {
+            "id": "Illustris_Subhalo_01",
+            "source": "Cosmological_Dark_Matter",
+            "raw_hash": "8b6e4960becd873028b119853b7304ad5942a59a4b753e46853c565b0d89ed0c",
+            "normalized_hash": "41d5b244d93b1e3344f1c6ca6267db35a84a380236639ff79871dfe43d3750c3",
+            "barcode_hash": "c7fa820b53e2d974e2f89f26b392af0fafa1d248e3669409ec4ffd1148c5b18e"
+        },
+        {
+            "id": "Illustris_Subhalo_02",
+            "source": "Cosmological_Dark_Matter",
+            "raw_hash": "c28563c157b820eba776a2649ab4a9a53134ceb32321bca6083c5c3a7ce5b4e6",
+            "normalized_hash": "a0e6f50343a952e156f13641b96da2fd9916a2afc590dd267b60d3dbafcab5c6",
+            "barcode_hash": "feceb62cc1089a2d8df406a5c5f6bd6bc6ba8001f59c6d53fe67e6288a152d3c"
+        }
+    ],
+    "status": "TIER_A_PRODUCTION_CERTIFIED"
+}

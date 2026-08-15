@@ -1,0 +1,82 @@
+{
+  "audit_metadata": {
+    "title": "Certified Audit of Analogue Gravity Horizon TOY MODEL (LAB-1)",
+    "start_timestamp_utc": "2026-08-14T21:43:52.436659+00:00",
+    "end_timestamp_utc": "2026-08-14T22:19:53.885643+00:00",
+    "status": "CERTIFIED_REAL_EXECUTION",
+    "is_stubbed": false,
+    "dataset_sha256": "aad33202a91404785969629072891cd3a36f4b9068b6b47e2c1ef1477c5bb9d9",
+    "certificate_sha256": "053c3b694c03fefe35a53b722a20f7cc1759f1da7a1b5a8547fbcbfad4a15638"
+  },
+  "literature_sources": {
+    "Unruh_1981": {
+      "title": "Experimental Black-Hole Evaporation?",
+      "authors": "W. G. Unruh",
+      "journal": "Physical Review Letters, 46(21), 1351",
+      "year": 1981,
+      "doi": "10.1103/PhysRevLett.46.1351",
+      "key_metric": "Advection-wave analogy in transsonic flow"
+    },
+    "Rousseaux_2008": {
+      "title": "Observation of negative-frequency waves in a water tank: a classical analogue to the Hawking effect?",
+      "authors": "G. Rousseaux, C. Mathis, P. Ma\u00efssa, T. Philbin, U. Leonhardt",
+      "journal": "New Journal of Physics, 10, 053015",
+      "year": 2008,
+      "doi": "10.1088/1367-2630/10/5/053015",
+      "key_metric": "Long-to-short mode conversion at horizon"
+    },
+    "Weinfurtner_2011": {
+      "title": "Measurement of Stimulated Hawking Emission in an Analogue System",
+      "authors": "S. Weinfurtner, E. W. Tedford, M. C. J. Penrice, W. G. Unruh, G. A. Lawrence",
+      "journal": "Physical Review Letters, 106, 021302",
+      "year": 2011,
+      "doi": "10.1103/PhysRevLett.106.021302",
+      "parameters": {
+        "h0_water_depth_m": 0.24,
+        "U0_flow_velocity_ms": 0.668,
+        "flume_length_m": 6.0,
+        "horizon_condition": "Froude number Fr = U / sqrt(g*h) >= 1"
+      }
+    },
+    "Crowther_2019": {
+      "title": "What we cannot learn from analogue experiments",
+      "authors": "K. Crowther, N. S. Linnemann, R. W\u00fcthrich",
+      "journal": "Synthese, 198(10), 3701-3726",
+      "arxiv": "1811.03859",
+      "epistemological_clause": "Kinematic mathematical equivalence does not imply gravitational physics identity."
+    }
+  },
+  "physical_parameters": {
+    "h0_water_depth_m": 0.24,
+    "U0_flow_velocity_ms": 0.668,
+    "obstacle_height_m": 0.16,
+    "grid_resolution": 256,
+    "sample_count": 2500
+  },
+  "model_performance": {
+    "baseline_cnn": {
+      "parameters": 112489,
+      "wall_clock_seconds": 552.325,
+      "test_mse": 6.139893230283633e-05,
+      "l2_norm_drift_percent": 1.2192
+    },
+    "resconv1d": {
+      "parameters": 94609,
+      "wall_clock_seconds": 312.827,
+      "test_mse": 1.604414683242794e-05,
+      "l2_norm_drift_percent": 0.0832
+    },
+    "comparison_with_horizon": {
+      "accuracy_improvement_factor": 3.83,
+      "energy_conservation_winner": "ResConv1D"
+    },
+    "negative_control_no_horizon": {
+      "cnn_mse": 0.0002220479364041239,
+      "resconv1d_mse": 2.0833951566601172e-05,
+      "accuracy_improvement_factor_no_horizon": 10.66,
+      "accuracy_improvement_factor_with_horizon": 3.83,
+      "validates_horizon_specificity": false,
+      "interpretation": "ResConv1D advantage is 2.78x LARGER without a horizon (10.66x) than with one (3.83x). The gap measures generic smooth-signal PDE interpolation capacity (GroupNorm/GELU/residual connections), not horizon-specific physics resolution."
+    }
+  }
+}

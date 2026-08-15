@@ -21,6 +21,9 @@ Your architectural mindset must discard traditional ML approaches (Transformers,
 3. **Pre-Geometric Emergence**: Do not assume space is a continuous $\mathbb{R}^d$ manifold. Space is an emergent property of Rulial rewrites and hypergraph contractions on abstract nodes.
 4. **vHPU Bridging**: When coding, remember you are translating Poly-Algebraic concepts (zero-overhead topology) onto von Neumann binary silicon (which generates "virtual heat" / extreme latency). Benchmark computational overhead explicitly.
 5. **Zero-Stub & Hardware Certification**: Never use synthetic data (e.g., `torch.randn`) for performance benchmarks. Synthetic random data causes CPU "cache-miss" fallacies that artificially inflate the performance of the vHPU over traditional MLPs. Always certify hardware speedups using real physical deterministic datasets and explicit hardware profiling (e.g., `torch.autograd.profiler`).
+6. **Chaos & Invariants over Loss**: In chaotic systems (like the Double Pendulum), the Lyapunov exponent causes prediction MSE to naturally diverge. Validate models based on their strict adherence to invariants (e.g. Hamiltonian conservation) via Hooks, not just raw MSE loss.
+7. **Direct Physical Feature Engineering**: When performing statistical inversion (e.g., Maxwell-Boltzmann temperature), provide models with linear/direct moment correlates (e.g., $\langle v^2 \rangle$) rather than non-linear transforms (logs) that force MLPs to learn complex exponentials.
+8. **Numerical Regularization in Rollouts**: Wave equations and continuous PDEs modeled by FNOs or CNNs lack numerical damping. Explicitly clip or clamp latent/physical values during long auto-regressive rollouts to prevent unbounded numerical resonance and energy divergence.
 ## 🛠️ Key Libraries & Toolchain
 - **NVIDIA Modulus**: Low-level infrastructure for Physics-ML.
 - **e3nn / egnn**: For Topo-Encoders and 3D equivariant operations.

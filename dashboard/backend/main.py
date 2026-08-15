@@ -320,6 +320,22 @@ def get_simulation_step(domain_id: int, step: int = 0):
         }
     }
 
+@app.get("/api/lab5/certification")
+def get_lab5_certification():
+    cert_run_path = os.path.join(BASE_DIR, "certs", "certification_run.json")
+    if os.path.exists(cert_run_path):
+        with open(cert_run_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    raise HTTPException(status_code=404, detail="LAB-5 Certification Manifest not found")
+
+@app.get("/api/lab5/audit")
+def get_lab5_audit():
+    audit_path = os.path.join(BASE_DIR, "certs", "audit_certificate_lab5.json")
+    if os.path.exists(audit_path):
+        with open(audit_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    raise HTTPException(status_code=404, detail="LAB-5 Audit Certificate not found")
+
 # Serve static frontend files
 STATIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "static")
 if os.path.exists(STATIC_DIR):

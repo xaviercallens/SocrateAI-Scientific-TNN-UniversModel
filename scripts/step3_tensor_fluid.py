@@ -77,11 +77,18 @@ def MassConservationHook(model, fluid_state):
             return False
 
 if __name__ == "__main__":
+    import math
     print("--- Initialisation du Tensor Encoder (Pilier Continu) ---")
+    print("    [Zero-Stub] Utilisation d'un champ de vorticité spectral déterministe")
     model = TNNTensorEncoder()
     
-    # Création d'un tenseur d'état fluide initial aléatoire
-    # Ex: une grille 2D de vorticité 16x16
-    fluid_state = torch.randn(1, 1, 16, 16)
+    # Zero-Stub Policy: Deterministic spectral vorticity field (NOT torch.randn)
+    # Physically-motivated: superposition of Fourier modes representing
+    # an incompressible 2D Taylor-Green vortex
+    x = torch.linspace(0, 2 * math.pi, 16)
+    y = torch.linspace(0, 2 * math.pi, 16)
+    grid_x, grid_y = torch.meshgrid(x, y, indexing='ij')
+    fluid_state = (torch.sin(2 * grid_x) * torch.cos(2 * grid_y) +
+                   0.3 * torch.sin(4 * grid_x)).unsqueeze(0).unsqueeze(0)
     
     MassConservationHook(model, fluid_state)

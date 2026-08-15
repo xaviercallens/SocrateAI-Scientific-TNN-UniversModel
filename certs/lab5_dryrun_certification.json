@@ -1,0 +1,69 @@
+{
+    "pipeline": "LAB-5 GCP DRY-RUN TDA PIPELINE",
+    "timestamp": "2026-08-15T16:54:19.521411",
+    "popper_falsification_tests": {
+        "test_a_noise_rejection": {
+            "status": "PASS",
+            "distance": 365.0331218307062
+        },
+        "test_b_sphere_rejection": {
+            "status": "PASS",
+            "distance": 1.6258884978699863
+        },
+        "test_c_stretch_rejection": {
+            "status": "PASS",
+            "distance": 358.7598472699641
+        }
+    },
+    "data_provenance": [
+        {
+            "id": "TARGET_P4",
+            "source": "Math_Proxy_Torus",
+            "raw_hash": "cef0f6bd2792f9b861facb0b69357779fd6e8a2fb1c1176c72d5185ed9329c31",
+            "barcode_hash": "a9e2556e41c2d23a1f616d56157dcfa70166572b09cba6f408a7c77d83c1241d"
+        },
+        {
+            "id": "DECOY_NOISE_A",
+            "source": "Falsification_A",
+            "raw_hash": "c99673767e87f834fbbabf73500c6f14fb718f34bdeb93ff707a2c91c4eb8666",
+            "barcode_hash": "ce2822e611a44e7cb1866a52ea8253ba5d7f71eb71c7293ab43d0d1d034e03eb"
+        },
+        {
+            "id": "DECOY_SPHERE_B",
+            "source": "Falsification_B",
+            "raw_hash": "56ef7650165848e9682f535b03795e75e9c94be4b96675a0c3cfc1eeaafbb4a0",
+            "barcode_hash": "caf71f8bdb4cc752d4d5d55a666645d08be6d5a808df8187359e1fa5f791b615"
+        },
+        {
+            "id": "DECOY_STRETCH_C",
+            "source": "Falsification_C",
+            "raw_hash": "7c72e67ae79cfe522f255b55d0434d4e1987f18360f0c5ad4136a80013197e37",
+            "barcode_hash": "ee0831ecdf31c23098743d18d4acf630315c7e8665548a6be5f93a43a760f6cc"
+        },
+        {
+            "id": "JHTDB_Vortex_0",
+            "source": "Ocean_Hydrodynamics",
+            "raw_hash": "ec5b27f0d4f3b0073292fb4ad8632eff14a5201b264819c4bbfc3afe2f2194fd",
+            "barcode_hash": "e305ca42117d95acff7baaa402246273cdc1c25d0d15f89cffab4bdaf075645d"
+        },
+        {
+            "id": "Illustris_Subhalo_0",
+            "source": "Cosmo_Dark_Matter",
+            "raw_hash": "f159b731a1e16b699d32c4ec2c676d9dc8a70bf5eca0e53e5cca87aeca19a1de",
+            "barcode_hash": "d46a0f7370f06d005bfe1a0008a42db4c784e52131d5161993079b24fac1292a"
+        },
+        {
+            "id": "JHTDB_Vortex_1",
+            "source": "Ocean_Hydrodynamics",
+            "raw_hash": "3c692212b48479347c47283a5d6b0449c48cd31b11386f816387d29f7382f46a",
+            "barcode_hash": "81c4e29e1dd7132ff789fb4921b5ef55bf8ba7b58b7e25f60b166deb3617dac3"
+        },
+        {
+            "id": "Illustris_Subhalo_1",
+            "source": "Cosmo_Dark_Matter",
+            "raw_hash": "b4c4664dd3f1b76c2c269596f510c1414102b0c8ef69c9e6353c99e482fe4263",
+            "barcode_hash": "b9ffb7bd8f31ca84623409b7106ef6e7e4930647cf5a72554dcc1c1ab404fc0c"
+        }
+    ],
+    "status": "TIER_A_DRY_RUN_CERTIFIED"
+}

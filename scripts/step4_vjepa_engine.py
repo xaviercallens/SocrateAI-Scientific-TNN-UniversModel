@@ -136,13 +136,37 @@ def RulialInversionHook(z_pred, z_target, H_t, H_pred):
         return True
 
 if __name__ == "__main__":
+    import math
     print("--- Initialisation de la boucle V-JEPA (Univers Model) ---")
+    print("    [Zero-Stub] Utilisation de trajectoires d'oscillateur harmonique déterministes")
     
-    # 1. Données factices : N=32 atomes, dim=6 (Q, P)
+    # Zero-Stub Policy: Deterministic harmonic oscillator phase-space trajectories
+    # State: (q1x, q1y, q1z, p1x, p1y, p1z) for a 3D oscillator
     batch_size = 32
-    x_t = torch.randn(batch_size, 6)
-    x_target = x_t + torch.randn(batch_size, 6) * 0.1 # État t+dt (légèrement évolué)
+    t_vals = torch.linspace(0, 4 * math.pi, batch_size)
     dt = 0.01
+    omega = 1.0
+    
+    # Exact harmonic oscillator: q(t) = A*sin(ωt), p(t) = mω*A*cos(ωt)
+    x_t = torch.stack([
+        torch.sin(omega * t_vals),           # q_x
+        torch.cos(omega * t_vals),           # q_y
+        0.5 * torch.sin(2 * omega * t_vals), # q_z
+        omega * torch.cos(omega * t_vals),   # p_x = dq_x/dt
+        -omega * torch.sin(omega * t_vals),  # p_y = dq_y/dt
+        omega * torch.cos(2 * omega * t_vals), # p_z
+    ], dim=1)
+    
+    # Target: exact evolution at t+dt
+    t_next = t_vals + dt
+    x_target = torch.stack([
+        torch.sin(omega * t_next),
+        torch.cos(omega * t_next),
+        0.5 * torch.sin(2 * omega * t_next),
+        omega * torch.cos(omega * t_next),
+        -omega * torch.sin(omega * t_next),
+        omega * torch.cos(2 * omega * t_next),
+    ], dim=1)
     
     # 2. Modèles
     vjepa = UniversVJEPA()

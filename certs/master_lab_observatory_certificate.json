@@ -1,0 +1,116 @@
+{
+  "timestamp": 1786787619.17725,
+  "status": "TIER_A_CERTIFIED",
+  "labs": {
+    "LAB-1": {
+      "schematics": {
+        "lab": "LAB-1 (Optoelectronic 4f Correlator & Laser Profiler)",
+        "components": [
+          {
+            "name": "5mW 532nm Green Laser",
+            "pin": "VCC 5V / GND",
+            "control": "MOSFET PWM via Pico GP10"
+          },
+          {
+            "name": "BPW34 Photodiode Sensor",
+            "pin": "Anode -> ADC0 (GP26), Cathode -> GND",
+            "signal": "Analog Voltage"
+          },
+          {
+            "name": "Photodiode Amplifier (OpAmp)",
+            "pin": "LM358 Gain 100x",
+            "power": "3.3V"
+          }
+        ],
+        "protocols": [
+          "Dual Space Optical FFT",
+          "Single-point defect propagation"
+        ]
+      },
+      "simulation": {
+        "spatial_resolution": 128,
+        "dual_energy": 66271931.383438274,
+        "reconstructed_energy": 4041.0015292218695,
+        "defect_suppression_ratio": 2.5836104596755236
+      },
+      "status": "PASSED"
+    },
+    "LAB-2": {
+      "schematics": {
+        "lab": "LAB-2 (BOMA-2D Dual-Axis Stepper Scanner)",
+        "components": [
+          {
+            "name": "X-Axis DVD Stepper Motor",
+            "driver": "A4988 #1",
+            "pins": "STEP: Pico GP14, DIR: Pico GP15",
+            "power": "12V VMOT"
+          },
+          {
+            "name": "Y-Axis DVD Stepper Motor",
+            "driver": "A4988 #2",
+            "pins": "STEP: Pico GP16, DIR: Pico GP17",
+            "power": "12V VMOT"
+          },
+          {
+            "name": "ADS1115 16-Bit ADC",
+            "interface": "I2C0 (SDA: GP0, SCL: GP1)",
+            "address": "0x48",
+            "channel": "A0 (BPW34 Light Intensity)"
+          }
+        ],
+        "microstepping": "1/16 step mode for sub-micrometer resolution"
+      },
+      "simulation": {
+        "max_intensity": 0.9937711674164387,
+        "grid_size": [
+          32,
+          32
+        ]
+      },
+      "status": "PASSED"
+    },
+    "LAB-3": {
+      "schematics": {
+        "lab": "LAB-3 (CHOP Hydrodynamic Observatory)",
+        "components": [
+          {
+            "name": "12V Submersible Circulation Pump (1500L/h)",
+            "control": "IRLZ44N MOSFET PWM via Pico GP20",
+            "flyback_diode": "1N4007"
+          },
+          {
+            "name": "5V UV Perturber Solenoid",
+            "control": "TIP120 Transistor via Pico GP21"
+          },
+          {
+            "name": "FCD Chequerboard Backlight Panel",
+            "power": "12V LED Grid"
+          },
+          {
+            "name": "Overhead High-Speed Camera",
+            "interface": "USB Video Stream to Host (OpenCV FCD)"
+          }
+        ],
+        "fluid_metric": "Fast-Chequerboard Demodulation 3D Surface Reconstruction"
+      },
+      "simulation": {
+        "is_horizon_present": true,
+        "max_froude": 2.709117566752781,
+        "rh_coords": [
+          -0.1456692913385827,
+          0.13779527559055116
+        ]
+      },
+      "status": "PASSED"
+    },
+    "LAB-4": {
+      "lock_hash": "bac4dc7691627035cd019ee54036c66a30864aad8a173292e83bea7d392bde5c",
+      "bond_dimension_chi": 8,
+      "p4_crash_peak_error": 30.4036865234375,
+      "no_magic_baseline_error": 3.4482016563415527,
+      "no_magic_turbulent_error": 24.93293571472168,
+      "negative_control_passed": true,
+      "status": "PASSED"
+    }
+  }
+}
