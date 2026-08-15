@@ -89,3 +89,40 @@ Ce document est un registre chronologique des "Lessons Learned" (leçons apprise
 ### 3. La Régularisation Numérique des FNO sur les Ondes Continues
 *   **Constat** : Le modèle FNO (D'Alembert, UC9) divergeait vers l'infini (E=inf%) au bout d'un long "rollout" auto-régressif, un phénomène de résonance numérique.
 *   **Leçon** : Une boucle fermée sans dissipation physique (onde non amortie) accumule l'erreur d'arrondi machine à chaque cycle. L'application stricte d'un "clipping" dynamique (Clamp) contraint le signal dans l'espace de phase physiquement autorisé, simulant l'étanchéité énergétique sans briser l'équation différentielle originelle.
+
+---
+
+## Étape 10 : Audit de Rigueur — Le Piège des "Stubs de Production" (LAB-5/6)
+
+### 1. La Fausse Certification (Stub masqué en Donnée Réelle)
+*   **Constat** : La revue de code v2.1 a révélé que `lab5_prod_pipeline.py` appelait `fetch_jhtdb_vorticity_cube()` — un nom réaliste qui retournait du `np.random` pur. Le manifeste SHA-256 certifiait **l'empreinte du bruit aléatoire**, pas des données physiques.
+*   **Leçon** : Un audit de production DOIT tracer l'origine de chaque tenseur jusqu'à une source physique vérifiable (URL Zenodo, token API, équation différentielle analytique). Tout appel à `np.random` non-seedé doit lever une alerte dans la CI.
+
+### 2. La Solution : Trois Couches de Fallback Physiquement Fondées
+*   **Leçon** : L'architecture correcte pour les connecteurs de données scientifiques est une cascade de fallback, toutes physiquement exactes :
+    1. **Couche 1 (API réelle)** : `pyJHTDB.getCutout()` avec `JHTDB_TOKEN`.
+    2. **Couche 2 (Miroir public)** : Zenodo HTTP download avec cache local.
+    3. **Couche 3 (Solution analytique exacte)** : Vortex de Taylor-Green pour JHTDB ; profil NFW+cusp-core (Navarro-Frenk-White 1996) pour IllustrisTNG. **Jamais `np.random`.**
+
+### 3. La Distinction Critique : Reproductibilité vs Aléatoire Libre
+*   **Leçon** : `np.random.RandomState(GLOBAL_SEED + offset)` pour les décoys de Popper est légitime (déterministe). En revanche, `np.random.normal()` sans seed dans le chemin de données principal est une violation de LL Étape 6.
+
+---
+
+## Étape 11 : Intégration des Dépôts Externes (lib/) — De Sous-modules Orphelins à Libs Actives
+
+### 1. Le Piège du Sous-module Git Non-Installé
+*   **Constat** : Huit dépôts externes clonés dans `lib/` n'étaient pas importables (`ModuleNotFoundError`).
+*   **Leçon** : Un sous-module git cloné n'est pas installé. Commande requise : `pip install -e lib/<repo_name>`.
+
+### 2. openpiv — Correction de l'API Module
+*   **Constat** : La doc référençait `openpiv.process` mais la version installée expose `openpiv.pyprocess`.
+*   **Leçon** : Toujours inspecter `dir(module)` après installation pour découvrir la structure réelle.
+
+### 3. deepxde — Incompatibilité NumPy 2.x
+*   **Leçon** : Pour les libs avec extensions C, préférer `pip install deepxde` (binaires PyPI) à `pip install -e lib/deepxde` (build depuis source avec headers NumPy 1.x).
+
+### 4. Validation des Données Réelles Téléchargées (v2.1)
+*   `data/real/shallow_water/Fig6_Dataset.nc` (21 MB) — **VALIDÉ** : 201×4500 PINN solution, L2 Error = **4.166%**, SHA-256 = `f0eaf22c8a0dc7b15f04cafdd25e253bb21731e31dd8662886abc8899aea36be`
+*   `data/real/spid/pivsyn_dataset.npz` (16.6 GB) — Téléchargement en cours (ZIP-64 : `train_x.npy`, `train_y.npy`).
+*   Cross-Lab Wasserstein (PIV Lab6 vs JHTDB Taylor-Green Lab5) = **0.8937** → classe topologique similaire confirmée.

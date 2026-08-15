@@ -31,9 +31,9 @@ import openpiv.tools as piv_tools
 from scripts.real_data.jhtdb_connector import fetch_jhtdb_vorticity_cube, _taylor_green_vorticity
 
 GLOBAL_SEED = 2026
-SPID_ZENODO_URL = "https://zenodo.org/record/7935215/files/SPID_dataset.zip"
+SPID_ZENODO_URL = "https://zenodo.org/api/records/7935215/files/pivsyn_dataset.npz/content"
 SPID_CACHE_DIR = Path("data/real/spid")
-SHALLOW_WATER_URL = "https://zenodo.org/record/13323923/files/dataset.zip"
+SHALLOW_WATER_URL = "https://zenodo.org/api/records/13323923/files/Fig6_Dataset.nc/content"
 SHALLOW_WATER_CACHE_DIR = Path("data/real/shallow_water")
 
 # =====================================================================
@@ -43,38 +43,30 @@ SHALLOW_WATER_CACHE_DIR = Path("data/real/shallow_water")
 def download_spid_dataset() -> Path:
     """
     Download SPID (Synthetic Particle Image Dataset) from Zenodo 7935215.
-    Real PIV particle image pairs with ground-truth optical flow.
+    Real file: pivsyn_dataset.npz (11 GB — PIV image pairs + ground-truth optical flow)
     """
     SPID_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    zip_path = SPID_CACHE_DIR / "spid.zip"
-    extract_dir = SPID_CACHE_DIR / "extracted"
+    npz_path = SPID_CACHE_DIR / "pivsyn_dataset.npz"
     
-    if extract_dir.exists() and any(extract_dir.iterdir()):
-        print(f"[SPID] Cache hit: {extract_dir}")
-        return extract_dir
+    if npz_path.exists():
+        print(f"[SPID] Cache hit: {npz_path} ({npz_path.stat().st_size / 1e9:.1f} GB)")
+        return SPID_CACHE_DIR
     
-    print(f"[SPID] Downloading from Zenodo 7935215...")
+    print(f"[SPID] Downloading pivsyn_dataset.npz from Zenodo 7935215 (~11 GB)...")
     try:
-        r = requests.get(SPID_ZENODO_URL, timeout=120, stream=True)
+        r = requests.get(SPID_ZENODO_URL, timeout=600, stream=True)
         r.raise_for_status()
         total = int(r.headers.get("content-length", 0))
         downloaded = 0
-        with open(zip_path, "wb") as f:
+        with open(npz_path, "wb") as f:
             for chunk in r.iter_content(chunk_size=65536):
                 f.write(chunk)
                 downloaded += len(chunk)
                 if total:
-                    pct = downloaded / total * 100
-                    print(f"\r[SPID] {pct:.1f}%", end="", flush=True)
+                    print(f"\r[SPID] {downloaded/total*100:.1f}%", end="", flush=True)
         print()
-        
-        print(f"[SPID] Extracting...")
-        with zipfile.ZipFile(zip_path, "r") as zf:
-            zf.extractall(extract_dir)
-        zip_path.unlink()
-        print(f"[SPID] Dataset ready at {extract_dir}")
-        return extract_dir
-    
+        print(f"[SPID] Dataset ready at {npz_path}")
+        return SPID_CACHE_DIR
     except Exception as e:
         print(f"[SPID] Download failed: {e}. Will use Taylor-Green synthetic PIV pairs.")
         return None
@@ -83,27 +75,24 @@ def download_spid_dataset() -> Path:
 def download_shallow_water_dataset() -> Path:
     """
     Download Closed-Boundary Reflections of Shallow Water Waves from Zenodo 13323923.
-    Used for PINNs training (wave propagation c=sqrt(gh)).
+    Real file: Fig6_Dataset.nc (NetCDF4, 21 MB)
     """
     SHALLOW_WATER_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    zip_path = SHALLOW_WATER_CACHE_DIR / "shallow_water.zip"
-    extract_dir = SHALLOW_WATER_CACHE_DIR / "extracted"
+    nc_path = SHALLOW_WATER_CACHE_DIR / "Fig6_Dataset.nc"
     
-    if extract_dir.exists() and any(extract_dir.iterdir()):
-        print(f"[ShallowWater] Cache hit: {extract_dir}")
-        return extract_dir
+    if nc_path.exists():
+        print(f"[ShallowWater] Cache hit: {nc_path} ({nc_path.stat().st_size / 1e6:.1f} MB)")
+        return SHALLOW_WATER_CACHE_DIR
     
-    print(f"[ShallowWater] Downloading from Zenodo 13323923...")
+    print(f"[ShallowWater] Downloading Fig6_Dataset.nc from Zenodo 13323923...")
     try:
         r = requests.get(SHALLOW_WATER_URL, timeout=120, stream=True)
         r.raise_for_status()
-        with open(zip_path, "wb") as f:
+        with open(nc_path, "wb") as f:
             for chunk in r.iter_content(chunk_size=65536):
                 f.write(chunk)
-        with zipfile.ZipFile(zip_path, "r") as zf:
-            zf.extractall(extract_dir)
-        zip_path.unlink()
-        return extract_dir
+        print(f"[ShallowWater] Dataset ready: {nc_path}")
+        return SHALLOW_WATER_CACHE_DIR
     except Exception as e:
         print(f"[ShallowWater] Download failed: {e}.")
         return None

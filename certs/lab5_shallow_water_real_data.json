@@ -1,0 +1,33 @@
+{
+    "source": "Zenodo 13323923 \u2014 Fig6_Dataset.nc",
+    "description": "Closed-Boundary Reflections of Shallow Water Waves \u2014 PINN benchmark",
+    "doi": "https://doi.org/10.5281/zenodo.13323923",
+    "variables": {
+        "u_reference": {
+            "shape": [
+                201,
+                4500
+            ],
+            "range": [
+                -0.1565999984741211,
+                0.1565999984741211
+            ]
+        },
+        "u_pinn": {
+            "shape": [
+                201,
+                4500
+            ]
+        },
+        "zeta": {
+            "shape": [
+                200,
+                4500
+            ]
+        }
+    },
+    "published_pinn_l2_error": 0.04165931857475846,
+    "sha256_u_reference": "f0eaf22c8a0dc7b15f04cafdd25e253bb21731e31dd8662886abc8899aea36be",
+    "timestamp": "2026-08-15T18:08:55.246275",
+    "status": "REAL_DATA_CERTIFIED"
+}
