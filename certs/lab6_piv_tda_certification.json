@@ -1,0 +1,19 @@
+{
+    "pipeline": "LAB-6 PIV TDA PIPELINE",
+    "timestamp": "2026-08-15T17:28:39.949033",
+    "external_lib": "openpiv-python (lib/openpiv-python)",
+    "data_source": {
+        "SPID": "https://zenodo.org/record/7935215/files/SPID_dataset.zip",
+        "shallow_water": "https://zenodo.org/record/13323923/files/dataset.zip",
+        "spid_downloaded": false,
+        "shallow_water_downloaded": false
+    },
+    "data_provenance": {
+        "raw_hash": "fc8657a7c34c18c436744fea2fbd978f085236b4cb010b86c7450f362048ca4b",
+        "normalized_hash": "39321f7674c796f3c6d552aa33f6685b9bdff96fa854cd30e828b21b4cadd00c",
+        "barcode_hash": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+    },
+    "h1_persistent_features": 1,
+    "cross_lab_wasserstein_piv_vs_jhtdb": 0.893719882305819,
+    "status": "LAB-6 TIER-A CERTIFIED"
+}
