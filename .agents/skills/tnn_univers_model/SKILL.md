@@ -2,6 +2,7 @@
 name: tnn-univers-model
 description: >-
   Agent behavior and skill instructions for the SocrateAI TNN (Thermodynamic, Topological, Tensor Neural Network) Univers Model. 
+  'Topological' scoped to EGNN/TDA pillars only (see NAMING_POLICY.md). Lab1 ResConv1D is NOT topological.
   Activate this when building the Poly-Algebraic Calculus core, the vHPU, or the V-JEPA physics engine.
 ---
 

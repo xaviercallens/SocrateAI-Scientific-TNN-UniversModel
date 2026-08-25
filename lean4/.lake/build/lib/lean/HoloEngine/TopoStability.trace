@@ -1,0 +1,66 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["7168b92f55af5093.olean"],
+  "m": false,
+  "i": "2ca60799e824af7d.ilean",
+  "c": "ec8a587e29c9d0f5.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/Cli/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/batteries/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/Qq/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/aesop/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/importGraph/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/plausible/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/mathlib/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean /home/xavkal/.elan/toolchains/leanprover--lean4---v4.34.0-rc2/bin/lean /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/HoloEngine/TopoStability.lean -o /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean/HoloEngine/TopoStability.olean -i /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean/HoloEngine/TopoStability.ilean -c /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/ir/HoloEngine/TopoStability.c --setup /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/ir/HoloEngine/TopoStability.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "HoloEngine/TopoStability.lean:24:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.Close.symm`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:29:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.Close.mono`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:33:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.Close.trans`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:42:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.Close.refl`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:51:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.ripsSimplex_of_subset`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:55:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.ripsSimplex_mono`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:59:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.ripsSimplex_empty`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:65:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.rips_shift`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:85:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.prod_nonempty`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:136:0: automatically included section variable(s) unused in theorem `HoloAlg.TDA.corrToDist_close`:\n  [DecidableEq V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [DecidableEq V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/TopoStability.lean:151:0: 'HoloAlg.TDA.ripsValue_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"}],
+ "inputs":
+ [["deps",
+   [["HoloEngine/HoloEngine:extraDep",
+     [["@HoloEngine:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["Mathlib transitive imports (legacy)", "cce5679dac655de5"],
+      ["Mathlib:importAllArts", "103949d456fe540e"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.0, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d",
+   "365244c167ac8c1d"],
+  ["/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/HoloEngine/TopoStability.lean",
+   "fae30ea7ed192e77"],
+  ["options", [["-DautoImplicit=false", "4a85acb881fd49d0"]]],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: HoloEngine.TopoStability", "6b44919b7074d3f8"],
+  ["Package.id?: (some HoloEngine)", "c1a2f8c43644a87c"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "ac3a6191c82a9c68"}

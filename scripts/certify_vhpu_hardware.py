@@ -54,7 +54,7 @@ def run_hardware_certification():
     mlp_stats = prof_mlp.key_averages().table(sort_by="cpu_time_total", row_limit=1)
     print(mlp_stats)
     
-    # 3. Hardware Profiling: vHPU Poly-Algebraic
+    # 3. Hardware Profiling: vHPU Discrete Rulial
     print("\nProfiling vHPU (Discrete Invert)...")
     with profile(activities=[ProfilerActivity.CPU], record_shapes=True, profile_memory=True) as prof_vhpu:
         with record_function("vHPU_Rulial_Invert"):

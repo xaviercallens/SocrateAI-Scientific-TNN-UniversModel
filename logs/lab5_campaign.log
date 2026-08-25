@@ -1,0 +1,91 @@
+[2026-08-15 19:38:37] ==========================================================================
+[2026-08-15 19:38:37]  LAB-5 LONG-RUN PRODUCTION CAMPAIGN
+[2026-08-15 19:38:37]  Machine: xavkal-svr2 | CPU cores: 8
+[2026-08-15 19:38:37]  RAM: 33.6 GB | Available: 12.8 GB
+[2026-08-15 19:38:37]  Grid sizes: [32, 48, 64, 96]
+[2026-08-15 19:38:37]  Datasets per batch: Target + 3 Popper + 5 JHTDB + 5 IllustrisTNG = 14
+[2026-08-15 19:38:37]  Total batches: 4
+[2026-08-15 19:38:37]  Estimated runtime: 2-5 days on 8-core CPU
+[2026-08-15 19:38:37] ==========================================================================
+[2026-08-15 19:38:37] Checkpoint: 0 batches already completed
+[2026-08-15 19:38:37] ======================================================================
+[2026-08-15 19:38:37] BATCH g32: grid_size=32³ (32,768 voxels)
+[2026-08-15 19:38:37] ======================================================================
+[2026-08-15 19:38:37] [1/14] Generating target torus proxy...
+[2026-08-15 19:38:41]   Target: 4 H₁ features
+[2026-08-15 19:38:41] [POPPER] Running 3 falsification controls...
+[2026-08-15 19:38:45]   Popper A (noise): W=378.9897 ✅ PASS
+[2026-08-15 19:38:48]   Popper B (sphere): W=1.3951 ✅ PASS
+[2026-08-15 19:38:51]   Popper C (stretch): W=333.7592 ✅ PASS
+[2026-08-15 19:38:51] [JHTDB] Processing 5 vorticity cubes...
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_32.npy
+[2026-08-15 19:38:53]   JHTDB_00: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_32.npy
+[2026-08-15 19:38:56]   JHTDB_01: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_32.npy
+[2026-08-15 19:38:59]   JHTDB_02: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_32.npy
+[2026-08-15 19:39:01]   JHTDB_03: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_32.npy
+[2026-08-15 19:39:02]   JHTDB_04: 3 H₁ features
+[2026-08-15 19:39:02] [IllustrisTNG] Processing 5 dark matter halos...
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:39:02]   Illustris_00: 1 H₁ features
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:39:03]   Illustris_01: 1 H₁ features
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:39:04]   Illustris_02: 1 H₁ features
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:39:05]   Illustris_03: 1 H₁ features
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:39:06]   Illustris_04: 1 H₁ features
+[2026-08-15 19:39:06] [CLUSTERING] Computing 14×14 Wasserstein distance matrix...
+[2026-08-15 19:39:35] ✅ Batch g32 COMPLETE in 58s — 14 datasets, Popper: ALL PASS
+[2026-08-15 19:39:35]    Certificate: certs/lab5_campaign/batch_g32.json
+[2026-08-15 19:39:35] 📊 Progress: 1/4 batches | Elapsed: 0.0h | ETA: 0.0h
+[2026-08-15 19:39:35] ======================================================================
+[2026-08-15 19:39:35] BATCH g48: grid_size=48³ (110,592 voxels)
+[2026-08-15 19:39:35] ======================================================================
+[2026-08-15 19:39:35] [1/14] Generating target torus proxy...
+[2026-08-15 19:39:37]   Target: 4 H₁ features
+[2026-08-15 19:39:37] [POPPER] Running 3 falsification controls...
+[2026-08-15 19:39:51]   Popper A (noise): W=1345.8611 ✅ PASS
+[2026-08-15 19:39:53]   Popper B (sphere): W=1.4424 ✅ PASS
+[2026-08-15 19:39:56]   Popper C (stretch): W=186.2231 ✅ PASS
+[2026-08-15 19:39:56] [JHTDB] Processing 5 vorticity cubes...
+[JHTDB] No JHTDB_TOKEN set. Attempting HTTP mirror / analytic fallback.
+[JHTDB] Downloading from Zenodo public mirror...
+[JHTDB] HTTP download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/4650378/files/isotropic1024coarse_u_t1.npy. Using Taylor-Green analytic vortex.
+[JHTDB] Taylor-Green vorticity grid: (48, 48, 48), max=0.2611
+[2026-08-15 19:39:59]   JHTDB_00: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_48.npy
+[2026-08-15 19:40:01]   JHTDB_01: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_48.npy
+[2026-08-15 19:40:03]   JHTDB_02: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_48.npy
+[2026-08-15 19:40:05]   JHTDB_03: 3 H₁ features
+[JHTDB] Cache hit: data/real/jhtdb/jhtdb_vorticity_48.npy
+[2026-08-15 19:40:07]   JHTDB_04: 3 H₁ features
+[2026-08-15 19:40:07] [IllustrisTNG] Processing 5 dark matter halos...
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:40:10]   Illustris_00: 1 H₁ features
+[IllustrisTNG] Attempting TNG50-4 public Zenodo download...
+[IllustrisTNG] Zenodo download failed: 404 Client Error: NOT FOUND for url: https://zenodo.org/records/7869033/files/TNG50-4_snapshot099_subhalo_catalog.hdf5
+[IllustrisTNG] Using physically-motivated NFW + cusp-core profile (not random).
+[2026-08-15 19:40:13]   Illustris_01: 1 H₁ features
+/home/xavkal/.local/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:359: UserWarning: resource_tracker: There appear to be 14 leaked semlock objects to clean up at shutdown
+  warnings.warn(
+/home/xavkal/.local/lib/python3.12/site-packages/joblib/externals/loky/backend/resource_tracker.py:359: UserWarning: resource_tracker: There appear to be 25 leaked folder objects to clean up at shutdown
+  warnings.warn(

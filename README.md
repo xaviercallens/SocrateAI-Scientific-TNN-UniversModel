@@ -1,5 +1,7 @@
 # TNN Univers Model (Thermodynamic, Topological, Tensor Neural Network)
 
+> **Naming caveat (N-1):** "Topological" refers to the EGNN/e3nn equivariant pillar and Lab5 TDA pipeline. Individual benchmarks (e.g., Lab1 ResConv1D) may not use topological structures — see [`NAMING_POLICY.md`](NAMING_POLICY.md) for scope.
+
 **Univers Model** est une architecture d'Intelligence Artificielle de nouvelle génération (Physics-ML). Contrairement aux Large Language Models (LLMs) entraînés sur du texte, l'Univers Model est un **V-JEPA (Joint-Embedding Predictive Architecture)** entraîné exclusivement sur les lois physiques de l'univers.
 
 ---

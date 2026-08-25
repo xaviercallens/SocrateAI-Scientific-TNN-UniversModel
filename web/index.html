@@ -427,7 +427,7 @@
         <!-- Live Wave Simulation Section -->
         <section class="glass-panel sim-container">
             <div class="sim-header">
-                <h2>🌊 Live Sonic Horizon Wave Simulator</h2>
+                <h2>🌊 Live Advection-Diffusion Kinematic Proxy</h2>
                 <div class="controls-bar">
                     <div class="control-group">
                         <label>Flow Speed $U_0$ (<span id="valU">0.67</span> m/s)</label>
@@ -632,7 +632,7 @@ python3 -m http.server 8080 --directory web/</code></pre>
                     ctx.stroke();
                     ctx.setLineDash([]);
                     ctx.fillStyle = '#ff007a';
-                    ctx.fillText('SONIC HORIZON (Fr=1)', i * scaleX + 6, 30);
+                    ctx.fillText('Fr=1 PROXY LINE (eff_vel sign change)', i * scaleX + 6, 30);
                     break;
                 }
             }

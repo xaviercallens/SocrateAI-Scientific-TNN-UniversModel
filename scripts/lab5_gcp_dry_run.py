@@ -1,3 +1,6 @@
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+
 import numpy as np
 import hashlib
 import json
@@ -7,6 +10,13 @@ from persim import wasserstein
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import linkage, dendrogram
 from gtda.homology import CubicalPersistence
+
+# L5-1 FIX: Import REAL data connectors (Taylor-Green / NFW analytic fallbacks)
+# instead of stub functions that returned the torus target itself.
+from scripts.real_data.jhtdb_connector import fetch_jhtdb_vorticity_cube
+from scripts.real_data.illustristng_connector import fetch_illustristng_dm_voxel_grid
+
+JHTDB_TOKEN = os.environ.get("JHTDB_TOKEN", "")
 
 # =====================================================================
 # 1. CRYPTOGRAPHIC DATA PROVENANCE & ISOMETRIC MAX-NORM
@@ -66,22 +76,16 @@ def generate_3d_stretched_torus_grid(grid_size: int = 32, R: float = 0.6, r: flo
     return grid
 
 # =====================================================================
-# 3. BIG DATA CONNECTORS (JHTDB & IllustrisTNG Stubs)
+# 3. BIG DATA CONNECTORS — Now uses REAL data connectors (L5-1 FIX)
 # =====================================================================
-
-def fetch_jhtdb_vorticity_cube(grid_size: int = 32, has_vortex: bool = True) -> np.ndarray:
-    """ Returns 3D scalar grid of vorticity norm from JHTDB isotropic1024coarse. """
-    if has_vortex:
-        return generate_3d_torus_grid(grid_size)
-    else:
-        return np.random.uniform(0, 1, (grid_size, grid_size, grid_size))
-
-def fetch_illustris_dm_density(grid_size: int = 32, has_halo_rebound: bool = True) -> np.ndarray:
-    """ Returns 3D scalar grid of dark matter density from IllustrisTNG via 3D KDE. """
-    if has_halo_rebound:
-        return generate_3d_torus_grid(grid_size)
-    else:
-        return np.random.exponential(1.0, (grid_size, grid_size, grid_size))
+# The original stubs returned generate_3d_torus_grid() as "JHTDB" data.
+# This created circular false positives — the pipeline "discovered" that
+# JHTDB matches IllustrisTNG because both were the SAME torus function.
+#
+# Now uses scripts/real_data/ connectors:
+#   - JHTDB: Taylor-Green analytic vortex (exact Navier-Stokes solution)
+#   - IllustrisTNG: NFW + cusp-core analytic profile (Navarro+Frenk+White 1996)
+# These are physically motivated but DISTINCT from the torus target proxy.
 
 # =====================================================================
 # 4. TDA ENGINE (CubicalPersistence for 3D Voxels)
@@ -162,11 +166,11 @@ def main():
     # [C] DATASET SAMPLE INGESTION
     print("[STEP 3] Ingesting sample JHTDB & IllustrisTNG datasets...")
     for i in range(2):
-        j_raw = fetch_jhtdb_vorticity_cube(grid_size=32, has_vortex=True)
-        processed_data.append(process_and_audit(f"JHTDB_Vortex_{i}", j_raw, "Ocean_Hydrodynamics"))
+        j_raw = fetch_jhtdb_vorticity_cube(grid_size=32, jhtdb_token=JHTDB_TOKEN)
+        processed_data.append(process_and_audit(f"JHTDB_Vortex_{i}", j_raw, "JHTDB_Taylor_Green_Vorticity"))
         
-        i_raw = fetch_illustris_dm_density(grid_size=32, has_halo_rebound=True)
-        processed_data.append(process_and_audit(f"Illustris_Subhalo_{i}", i_raw, "Cosmo_Dark_Matter"))
+        i_raw = fetch_illustristng_dm_voxel_grid(subhalo_id=i, grid_size=32)
+        processed_data.append(process_and_audit(f"Illustris_Subhalo_{i}", i_raw, "IllustrisTNG_NFW_DarkMatter"))
         
     # [D] WASSERSTEIN METRIC MATRIX & UPGMA CLUSTERING
     print("[STEP 4] Computing Wasserstein Distance Matrix & UPGMA Linkage...")

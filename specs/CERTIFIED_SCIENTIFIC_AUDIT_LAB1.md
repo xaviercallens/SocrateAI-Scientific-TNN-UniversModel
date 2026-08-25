@@ -71,3 +71,32 @@ python3 scripts/certified_audit_lab1.py
 python3 -m json.tool certs/audit_certificate_lab1.json
 python3 -m http.server 8080 --directory web/
 ```
+
+---
+
+## Extensions (v3.1 — 2026-08-25)
+
+### Rotating Vortex — Torres 2017 Compatible Model
+
+`scripts/lab1_draining_vortex_v2_rotating.py` adds:
+- **Azimuthal velocity** `v_φ(r) = B/r` (Rankine vortex, irrotational outside core)
+- **Ergoregion** at `r_e = √(A² + B²)/c` (distinct from radial horizon `r_h = A/c`)
+- **Azimuthal mode coupling** `v_eff = v_r - m·v_φ/r` for wave mode `m`
+- **Ergoregion specificity check** — compares m=0 vs m=1 MSE ratios
+- Torres 2017 citation is **conditionally valid** if ergoregion MSE ratio > radial-only MSE ratio
+
+### Architecture Ablation (2³ Grid)
+
+`scripts/lab1_architecture_ablation.py` isolates:
+- **Residual skip connections** vs no skip
+- **GroupNorm** vs BatchNorm
+- **GELU** vs ReLU
+
+Over 8 model variants, holding all other hyperparameters fixed (hidden=48, layers=4).
+The marginal contribution of each axis is reported as average MSE improvement.
+
+### Clarified Scope Boundary
+
+`tnn/physics/symplectic_fno.py:rollout_hamiltonian_drift_symplectic` now carries an
+explicit RES-1 scope note: valid only for true HNN systems (use cases 1–10),
+**NOT** for the Lab1 advection-diffusion proxy.

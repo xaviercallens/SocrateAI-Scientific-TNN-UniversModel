@@ -77,6 +77,15 @@ def rollout_hamiltonian_drift_symplectic(hnn_model, x0: torch.Tensor,
     Computes Hamiltonian L2-drift over a long rollout using the Yoshida symplectic
     integrator. Replaces the RK4-based rollout_l2_drift in benchmark_baselines.py.
 
+    ⚠️ SCOPE NOTE (RES-1 / N-1 compliance):
+      This function is ONLY valid for TRUE HAMILTONIAN SYSTEMS (use cases 1–10:
+      spring, 3-body, double pendulum, relativistic oscillator, etc.) where the
+      model implements a real conserved energy H(q, p) via hnn_model.hamiltonian().
+
+      It MUST NOT be used for the Lab1 advection-diffusion proxy — that system
+      is dissipative by construction. Use certified_audit_lab1.compute_l2_drift()
+      for the advection-diffusion proxy instead (see that function's docstring).
+
     This metric IS physically meaningful for HNN models: H is the network's own
     scalar output, and the symplectic integrator preserves its value by construction
     (up to the HNN's approximation quality).

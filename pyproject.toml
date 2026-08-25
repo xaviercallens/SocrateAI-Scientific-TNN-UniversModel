@@ -5,7 +5,7 @@ build-backend = "setuptools.backends._legacy:_Backend"
 [project]
 name = "tnn-univers-model"
 version = "0.2.0"
-description = "TNN (Thermodynamic, Topological, Tensor Neural Network) Univers Model — Physics-Informed AI"
+description = "TNN (Thermodynamic, Topological, Tensor Neural Network) Univers Model — Physics-Informed AI. Note: 'Topological' scoped to EGNN/TDA pillars only; see NAMING_POLICY.md"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"

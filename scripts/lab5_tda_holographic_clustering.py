@@ -10,6 +10,22 @@ from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 # =====================================================================
+# SCOPE NOTE (L5-4 — RES-1 / N-1 compliance):
+# This script uses RIPSER (Vietoris-Rips on 3D POINT CLOUDS) as the
+# original conceptual PoC for the Lab 5 TDA pipeline.
+# 
+# The PRODUCTION scripts (lab5_prod_pipeline.py, lab5_long_run.py) use
+# CUBICAL PERSISTENCE (giotto-tda) on 3D VOXEL GRIDS — which is the
+# correct algorithm for scalar field data (JHTDB, IllustrisTNG).
+#
+# Both methods compute H1 persistent homology; they differ in input type:
+#   - Ripser: unstructured point clouds → Vietoris-Rips complex
+#   - CubicalPersistence: structured grids → cubical complex
+#
+# The clustering and Wasserstein metric logic is identical.
+# =====================================================================
+
+# =====================================================================
 # 1. GÉNÉRATION DES DONNÉES (MOCKS TRANS-ÉCHELLES)
 # =====================================================================
 
@@ -147,13 +163,14 @@ def main():
     diagrams.append(target_barcode)
     
     print("[ÉTAPE 2] Tamisage Topologique : Océan (10^2m) vs Cosmologie (10^20m)...")
-    np.random.seed(None) # Libération de l'aléatoire pour le big data
+    # L5-6 FIX: Use deterministic per-dataset seeds (was np.random.seed(None))
     
     ocean_sample_p4 = None
     cosmo_sample_p4 = None
-    ocean_sample_chaos = None
+    ocean_chaos_sample = None  # L5-6: fixed undefined variable name
 
     for i in range(10):
+        np.random.seed(2026 + i)  # Deterministic per-dataset seed
         has_sig = (i < 5)
         pc = generate_ocean_turbulence(has_p4_signature=has_sig)
         datasets.append(pc)
@@ -166,6 +183,7 @@ def main():
             ocean_chaos_sample = (pc, barcode)
         
     for i in range(10):
+        np.random.seed(2026 + 100 + i)  # Deterministic per-dataset seed
         has_sig = (i < 5)
         pc = generate_dark_matter_halo(has_p4_signature=has_sig)
         datasets.append(pc)

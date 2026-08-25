@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 app = FastAPI(
     title="vHPU SymBrain v4 Benchmark & Physics Visualizer",
-    description="Backend API for vHPU Poly-Algebraic Execution vs Traditional MLP across 15 Physics Domains",
+    description="Backend API for vHPU Discrete Rulial Execution vs Traditional MLP across 15 Physics Domains",
     version="1.0.0"
 )
 
@@ -283,7 +283,7 @@ def get_simulation_step(domain_id: int, step: int = 0):
         raise HTTPException(status_code=404, detail="Domain not found")
     
     # Generate deterministic step data for both Traditional MLP (with noise/drift)
-    # and vHPU (crisp exact Poly-Algebraic shift)
+    # and vHPU (crisp exact Discrete Rulial shift)
     N = 100
     t = step * 0.1
     

@@ -1,0 +1,42 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["60535a2b8a5f30bb.olean"],
+  "m": false,
+  "i": "ef7b22de3943d3f1.ilean",
+  "c": "391f4a71c47c25b8.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/Cli/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/batteries/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/Qq/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/aesop/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/importGraph/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/plausible/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/packages/mathlib/.lake/build/lib/lean:/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean /home/xavkal/.elan/toolchains/leanprover--lean4---v4.34.0-rc2/bin/lean /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/HoloEngine/PenroseFormalism.lean -o /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean/HoloEngine/PenroseFormalism.olean -i /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/lib/lean/HoloEngine/PenroseFormalism.ilean -c /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/ir/HoloEngine/PenroseFormalism.c --setup /home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/.lake/build/ir/HoloEngine/PenroseFormalism.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "HoloEngine/PenroseFormalism.lean:68:25: Variable name `V` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _V\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "HoloEngine/PenroseFormalism.lean:89:0: 'PenroseFormalism.ccc_no_singularity' depends on axioms: [propext, Classical.choice, Quot.sound]",
+   "level": "info"},
+  {"message":
+   "HoloEngine/PenroseFormalism.lean:90:0: 'PenroseFormalism.macro_micro_sync' depends on axioms: [propext, Quot.sound]",
+   "level": "info"}],
+ "inputs":
+ [["deps",
+   [["HoloEngine/HoloEngine:extraDep",
+     [["@HoloEngine:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["Mathlib transitive imports (legacy)", "cce5679dac655de5"],
+      ["Mathlib:importAllArts", "103949d456fe540e"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.0, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d",
+   "365244c167ac8c1d"],
+  ["/home/xavkal/xdev/SocrateAI-Scientific-TNN-UniversModel/SocrateAI-Scientific-TNN-UniversModel/lean4/HoloEngine/PenroseFormalism.lean",
+   "22c69812942b798a"],
+  ["options", [["-DautoImplicit=false", "4a85acb881fd49d0"]]],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: HoloEngine.PenroseFormalism", "3cb2863d601ab95f"],
+  ["Package.id?: (some HoloEngine)", "c1a2f8c43644a87c"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "140b1c1dfc687525"}

@@ -1,0 +1,54 @@
+{
+    "pipeline": "LAB-6 GALERKIN ENERGY NUMERICAL VERIFICATION",
+    "purpose": "Bridge between NS_Galerkin_Energy.lean and lab6_fgrs_oracle.py",
+    "timestamp": "2026-08-25T14:19:16.601497",
+    "all_passed": true,
+    "tests": [
+        {
+            "test": "triadic_antisymmetry",
+            "lean4_theorem": "energy_decreases_under_dissipation (premise validation)",
+            "M": 4,
+            "n_trials": 10,
+            "max_inner_product": 8.988365607365267e-13,
+            "tolerance": 1e-10,
+            "passed": true
+        },
+        {
+            "test": "energy_monotonicity",
+            "lean4_theorem": "energy_decreases_under_dissipation",
+            "M": 3,
+            "nu": 0.1,
+            "dt": 0.001,
+            "n_steps": 20,
+            "E_initial": 112.09316099323847,
+            "E_final": 109.71109853369303,
+            "decay_ratio": 0.9787492614318448,
+            "monotone_violations": 0,
+            "max_violation": 0.0,
+            "passed": true
+        },
+        {
+            "test": "poincare_bound",
+            "lean4_theorem": "poincare_dissipation_bound",
+            "M": 4,
+            "lambda_1": 1,
+            "nu": 0.01,
+            "n_trials": 10,
+            "min_ratio_D_over_bound": 8.783897250676787,
+            "violations": 0,
+            "passed": true
+        },
+        {
+            "test": "divergence_freedom",
+            "lean4_theorem": "inner_sub_proj_eq_zero",
+            "M": 4,
+            "n_trials": 10,
+            "max_divergence": 2.8951074449790722e-15,
+            "tolerance": 1e-14,
+            "passed": true
+        }
+    ],
+    "lean4_file": "certs/NS_Galerkin_Energy.lean",
+    "oracle_file": "scripts/lab6_fgrs_oracle.py",
+    "status": "TIER_A_NUMERICAL_BRIDGE_CERTIFIED"
+}

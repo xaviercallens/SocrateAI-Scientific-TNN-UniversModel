@@ -151,7 +151,7 @@ function App() {
                         borderWidth: 1
                     },
                     {
-                        label: 'vHPU Poly-Algebraic Latency (ms)',
+                        label: 'vHPU Discrete Rulial Latency (ms)',
                         data: domains.map(d => d.vhpu_latency_ms),
                         backgroundColor: 'rgba(16, 185, 129, 0.7)',
                         borderColor: '#10b981',
@@ -208,7 +208,7 @@ function App() {
                         <h1 className="text-xl font-bold bg-gradient-to-r from-white via-gray-200 to-emerald-400 bg-clip-text text-transparent">
                             vHPU SymBrain v4 Runtime
                         </h1>
-                        <p className="text-xs text-gray-400">TNN Univers Model • Poly-Algebraic Execution Engine</p>
+                        <p className="text-xs text-gray-400">TNN Univers Model • Discrete Rulial Execution Engine</p>
                     </div>
                 </div>
 
@@ -286,7 +286,7 @@ function App() {
                         </div>
                         <div className="text-xs text-gray-400 flex items-center gap-4">
                             <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-red-500 rounded"></span> Traditional MLP</span>
-                            <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-emerald-500 rounded"></span> vHPU Poly-Algebraic</span>
+                            <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-emerald-500 rounded"></span> vHPU Discrete Rulial</span>
                         </div>
                     </div>
                     <div className="h-72">
@@ -415,7 +415,7 @@ function App() {
                                     <div>
                                         <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
                                             <i className="fa-solid fa-bolt text-emerald-400"></i>
-                                            vHPU Engine (Poly-Algebraic)
+                                            vHPU Engine (Discrete Rulial)
                                         </span>
                                         <h3 className="text-sm font-bold text-white mt-0.5">{selectedDomain.name}</h3>
                                     </div>

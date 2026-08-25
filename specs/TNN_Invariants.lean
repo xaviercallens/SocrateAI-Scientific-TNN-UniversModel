@@ -1,65 +1,82 @@
-import Mathlib.Dynamics.Ergodic.MeasurePreserving
 import Mathlib.Analysis.Calculus.FDeriv.Basic
-import Mathlib.Geometry.Symplectic.Basic
 
 /-!
-# Formalisation Lean 4 du TNN Univers Model
-Ce fichier contient la validation formelle des invariants topologiques et
-thermodynamiques utilisés dans l'architecture Poly-Algébrique (HNN & EGNN).
+# Formalisation Lean 4 du TNN Univers Model — Invariants
+
+STATUS: PARTIAL — some theorems use sorry where Lean 4 formalization
+of symplectic geometry / Hamiltonian flows is not yet available in Mathlib.
+Each sorry is explicitly documented with what would be needed to close it.
+
+NAMING CAVEAT (N-1): "Topological" in TNN refers to EGNN/TDA pillars only.
+Lab 1 ResConv1D is NOT topological. See NAMING_POLICY.md.
 -/
 
 namespace TNNUnivers
 
-/-- 
-L'espace des phases canonique est une variété symplectique M = ℝ^(2n).
-Ici, nous définissons un état d'Univers générique (q, p).
+/-! ############################################################################
+    §1. SYMPLECTIC PHASE SPACE (Conceptual Framework)
+    ############################################################################ -/
+
+/--
+The canonical phase space is R^(2n). We define a generic universe state (q, p).
+NOTE: Full symplectic formalization requires Mathlib.Geometry.Symplectic which
+is under active development. We use a simplified version here.
 -/
 variable {n : ℕ}
-def PhaseSpace := ℝ^(2*n)
-
-/-- 
-Le Hamiltonien ℋ est une fonction scalaire de l'espace des phases vers les Réels,
-qui représente l'Énergie Totale de l'Univers.
--/
-variable (H : PhaseSpace → ℝ)
 
 /--
-Définition : Un champ de vecteurs Hamiltonien X_H préserve la forme symplectique ω.
-Dans le contexte du HNN (Hamiltonian Neural Network), le réseau apprend H_theta, 
-et la dérivée temporelle est donnée par l'opérateur symplectique J ∇H.
+The Hamiltonian H is a scalar function of phase space representing total energy.
+In the HNN (Hamiltonian Neural Network), the network learns H_theta,
+and the temporal derivative is given by the symplectic operator J∇H.
 -/
-def is_hamiltonian_flow (flow : ℝ → PhaseSpace → PhaseSpace) (H : PhaseSpace → ℝ) : Prop :=
-  ∀ (t : ℝ) (z : PhaseSpace), 
-  -- La dérivée temporelle du flot correspond au champ Hamiltonien
-  -- (Simplification conceptuelle pour le TNN Energy Critic)
-  True 
-
-/-- 
-THÉORÈME 1 : Conservation de l'Énergie (First Law of Thermodynamics)
-Si l'évolution temporelle suit rigoureusement les équations de Hamilton (ce qui 
-est forcé par le HNN Autograd Hook), alors l'Énergie Totale est conservée.
--/
-theorem energy_conservation (flow : ℝ → PhaseSpace → PhaseSpace) (hFlow : is_hamiltonian_flow flow H) :
-  ∀ (t : ℝ) (z_0 : PhaseSpace), H (flow t z_0) = H z_0 := by
-  -- La preuve rigoureuse requiert le théorème de Liouville / conservation de l'énergie
-  -- Pour l'audit TNN, on admet l'axiome symplectique standard :
-  sorry
 
 /--
-THÉORÈME 2 : Equivariance E(3) du Pilier Topologique (EGNN)
-L'opérateur de passage de message topologique V est invariant sous l'action 
-du groupe Orthogonal O(3) et du groupe des translations.
+THEOREM 1: Hamiltonian Flow Preservation (Conceptual)
+
+For a true Hamiltonian system where the flow exactly follows Hamilton's equations,
+energy is conserved. This is the mathematical justification for the HNN architecture.
+
+STATUS: sorry — requires Mathlib formalization of:
+  1. Symplectic manifold structure on R^(2n)
+  2. Hamiltonian vector field definition via J∇H
+  3. Noether's theorem / conservation along flow
+The proof would follow from: the Lie derivative of H along X_H vanishes
+because X_H is defined via the symplectic form and H itself.
 -/
-variable (V : ℝ^3 → ℝ)
-variable (R : Matrix (Fin 3) (Fin 3) ℝ) -- Matrice de rotation
-variable (t_vec : ℝ^3) -- Vecteur de translation
+-- Intentionally left as a documented stub rather than a vacuously true definition.
+-- The previous version defined `is_hamiltonian_flow` as `True`, which made
+-- `energy_conservation` trivially provable but semantically vacuous.
 
-def is_e3_equivariant (V : ℝ^3 → ℝ) : Prop :=
-  ∀ (q : ℝ^3), V (R * q + t_vec) = V q
+/-! ############################################################################
+    §2. E(3) EQUIVARIANCE (EGNN Pillar — Topological)
+    ############################################################################ -/
 
-theorem egnn_preserves_topology (V_theta : ℝ^3 → ℝ) (hEq : is_e3_equivariant V_theta R t_vec) :
-  ∀ (q : ℝ^3), V_theta (R * q + t_vec) = V_theta q := by
+/--
+THEOREM 2: E(3) Equivariance of Topological Pillar (EGNN)
+
+The message-passing operator V is invariant under the action of the
+Orthogonal group O(3) and the translation group.
+
+This IS proven: it follows directly from the hypothesis.
+The physical content is that EGNN architectures enforce this by construction
+(distance-based message passing).
+-/
+variable (V : Fin 3 → ℝ → ℝ)
+
+def is_rotation_invariant (f : (Fin 3 → ℝ) → ℝ) (R : Matrix (Fin 3) (Fin 3) ℝ) (t_vec : Fin 3 → ℝ) : Prop :=
+  ∀ (q : Fin 3 → ℝ), f (R.mulVec q + t_vec) = f q
+
+theorem egnn_preserves_topology (V_theta : (Fin 3 → ℝ) → ℝ)
+    (R : Matrix (Fin 3) (Fin 3) ℝ) (t_vec : Fin 3 → ℝ)
+    (hEq : is_rotation_invariant V_theta R t_vec) :
+    ∀ (q : Fin 3 → ℝ), V_theta (R.mulVec q + t_vec) = V_theta q := by
   intro q
   exact hEq q
+
+/-! ############################################################################
+    §3. AUDIT
+    ############################################################################ -/
+
+#print axioms egnn_preserves_topology
 
 end TNNUnivers

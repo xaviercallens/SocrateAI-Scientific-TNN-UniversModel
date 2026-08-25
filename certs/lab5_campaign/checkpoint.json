@@ -1,0 +1,117 @@
+{
+  "completed_batches": [
+    "g32"
+  ],
+  "results": [
+    {
+      "batch_id": "g32",
+      "grid_size": 32,
+      "voxel_count": 32768,
+      "timestamp": "2026-08-15T19:39:35.705490",
+      "elapsed_seconds": 58.4,
+      "n_datasets": 14,
+      "popper_falsification": {
+        "noise_rejection": {
+          "pass": true,
+          "wasserstein": 378.989695125807
+        },
+        "sphere_rejection": {
+          "pass": true,
+          "wasserstein": 1.3951381335217903
+        },
+        "stretch_rejection": {
+          "pass": true,
+          "wasserstein": 333.75917350874886
+        },
+        "all_passed": true
+      },
+      "data_provenance": [
+        {
+          "id": "TARGET_TORUS_32",
+          "source": "Analytic Torus T\u00b2",
+          "sha256": "6154bc0fcd90e64b6c81bd11b40b95fcd947a083166efd4398e76121b20fc2ef",
+          "h1_features": 4
+        },
+        {
+          "id": "POPPER_NOISE_32",
+          "source": "Gaussian White Noise (null hypothesis)",
+          "sha256": "b726bd887d974773d018f3e35fb55b52d0d6bbd614f41bcbef1ee5a777dabb24",
+          "h1_features": 2245
+        },
+        {
+          "id": "POPPER_SPHERE_32",
+          "source": "Hollow Sphere S\u00b2 (topological decoy)",
+          "sha256": "136c17431491ba9e008852b66fb1d04d708ef176d790fcea05d540fca246bfd0",
+          "h1_features": 1
+        },
+        {
+          "id": "POPPER_STRETCH_32",
+          "source": "Z-Stretch Torus (isometry rupture)",
+          "sha256": "8f1ef217d687c2206e4cae3baf52dde30471ef5e75647189ef3f1ec064de0cf4",
+          "h1_features": 2058
+        },
+        {
+          "id": "JHTDB_32_00",
+          "source": "JHTDB Taylor-Green / API",
+          "sha256": "51c5ab5cb6830193b110db44ed384c826181fe96d019ae805c82e454a5eccf41",
+          "h1_features": 3
+        },
+        {
+          "id": "JHTDB_32_01",
+          "source": "JHTDB Taylor-Green / API",
+          "sha256": "51c5ab5cb6830193b110db44ed384c826181fe96d019ae805c82e454a5eccf41",
+          "h1_features": 3
+        },
+        {
+          "id": "JHTDB_32_02",
+          "source": "JHTDB Taylor-Green / API",
+          "sha256": "51c5ab5cb6830193b110db44ed384c826181fe96d019ae805c82e454a5eccf41",
+          "h1_features": 3
+        },
+        {
+          "id": "JHTDB_32_03",
+          "source": "JHTDB Taylor-Green / API",
+          "sha256": "51c5ab5cb6830193b110db44ed384c826181fe96d019ae805c82e454a5eccf41",
+          "h1_features": 3
+        },
+        {
+          "id": "JHTDB_32_04",
+          "source": "JHTDB Taylor-Green / API",
+          "sha256": "51c5ab5cb6830193b110db44ed384c826181fe96d019ae805c82e454a5eccf41",
+          "h1_features": 3
+        },
+        {
+          "id": "ILLUSTRIS_32_00",
+          "source": "IllustrisTNG NFW / Zenodo",
+          "sha256": "8393073818f436f13ff761281357d62bba373ff603bc33be57650f1c3b52f508",
+          "h1_features": 1
+        },
+        {
+          "id": "ILLUSTRIS_32_01",
+          "source": "IllustrisTNG NFW / Zenodo",
+          "sha256": "8393073818f436f13ff761281357d62bba373ff603bc33be57650f1c3b52f508",
+          "h1_features": 1
+        },
+        {
+          "id": "ILLUSTRIS_32_02",
+          "source": "IllustrisTNG NFW / Zenodo",
+          "sha256": "8393073818f436f13ff761281357d62bba373ff603bc33be57650f1c3b52f508",
+          "h1_features": 1
+        },
+        {
+          "id": "ILLUSTRIS_32_03",
+          "source": "IllustrisTNG NFW / Zenodo",
+          "sha256": "8393073818f436f13ff761281357d62bba373ff603bc33be57650f1c3b52f508",
+          "h1_features": 1
+        },
+        {
+          "id": "ILLUSTRIS_32_04",
+          "source": "IllustrisTNG NFW / Zenodo",
+          "sha256": "8393073818f436f13ff761281357d62bba373ff603bc33be57650f1c3b52f508",
+          "h1_features": 1
+        }
+      ],
+      "status": "CERTIFIED"
+    }
+  ]
+}

@@ -1,12 +1,24 @@
 """
 =================================================================
-  LAB-1 BENCHMARK: Analogue Gravity in a Water Tank (Draining Vortex)
+  ⚠️ DEPRECATED — DO NOT USE FOR PUBLICATION OR COMPARISON
 =================================================================
-Simulates the propagation of shallow water waves on a draining vortex background.
-We compare a physics-naive Traditional CNN against a TNN (Spectral ResConv1D).
+  Original file: LAB-1 BENCHMARK — Analogue Gravity Draining Vortex
 
-The radial flow v(r) = -A/r creates a sonic horizon where |v(r)| = c = sqrt(g*h).
-The model must predict the wave field u(r, t+dt) from u(r, t).
+  WHY DEPRECATED:
+    1. Parameter budgets NOT equalized (both use hidden=64 → ratio bias).
+    2. No negative control (Fr < 1 everywhere).
+    3. Static eff_vel (single frozen field, not randomized per sample).
+    4. 1-channel input (network cannot generalize over varied physics).
+    5. No Torres 2017 rotation term despite vortex framing.
+
+  REPLACEMENT: Use certified_audit_lab1.py v3.0 (TIER A)
+    - 2-channel input, per-sample randomized physics
+    - Parameter budget equalized (1.19× ratio)
+    - Mandatory negative control
+    - Honest naming (ResConv1D, not "TNN")
+
+  Kept for git history and audit trail only.
+=================================================================
 """
 import time, json, math, datetime
 import torch
