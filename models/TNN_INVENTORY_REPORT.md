@@ -1,4 +1,4 @@
-# INVENTAIRE COMPLET DES TNN ET DATASETS PRÉ-ENTRAÎNÉS (LAB-0 À LAB-4)
+# INVENTAIRE COMPLET DES TNN ET DATASETS PRÉ-ENTRAÎNÉS (LAB-0 À LAB-7)
 
 **Statut :** TNN Spécialisés Initialisés et Poids Sauvegardés  
 **Espace de Stockage :** `./models/` & `./data/open_datasets/`
@@ -13,7 +13,10 @@
 | **LAB-1** | `tnn_lab1_fourier.py` | Complex Spectral Optical Correlator | Filtrage Dual Space Fourier | `tnn_lab1_fourier.pt` |
 | **LAB-2** | `tnn_lab2_boma2d.py` | Neural PIV / Conv2D Decoder | Reconstruction Champ de Vitesse (u, v) | `tnn_lab2_boma2d.pt` |
 | **LAB-3** | `tnn_lab3_hydro_pinn.py` | Hydrodynamic PINN (Shallow Water) | Bernoulli $v \partial_x v + g \partial_x h = 0$ | `tnn_lab3_hydro_pinn.pt` |
-| **LAB-4** | `tnn_holographic_p4_detector.py` / `retrain_lab4_holographic_tnn.py` | Holographic Bottleneck TNN ($\chi = 8$) + Pretrained RAFT Optical Flow | Loi d'Aire & Rebond P4 ($r_h$) (MSE: $0.0078$, Ratio Turbulence: $4666\times$) | `tnn_lab4_holographic_p4_retrained.pt` + `raft_small_C_T_V2.pth` |
+| **LAB-4** | `tnn_holographic_p4_detector.py` | Holographic Bottleneck TNN ($\chi = 8$) | Loi d'Aire & Rebond P4 ($r_h$) | `tnn_lab4_holographic_p4.pt` |
+| **LAB-5** | `tnn_lab5_tda.py` | Persistent Homology PointNet | Entrelacement Max-Norm & Wasserstein | `tnn_lab5_tda.pt` |
+| **LAB-6** | `tnn_lab6_navier_stokes.py` | Leray-Hopf Z3 Projection Net | Borne Enstrophie (Divergence Nulle) | `tnn_lab6_navier_stokes.pt` |
+| **LAB-7** | `tnn_lab7_k3.py` | Telluric K3 Oracle Autoencoder | Isomorphisme Matrice Intersection | `tnn_lab7_k3.pt` |
 
 ---
 
@@ -21,5 +24,6 @@
 
 1. **`openpiv_vortex_benchmark.json`** : Données de vélocimétrie PIV issues de *Weinfurtner et al. (2011)* pour la cinématique de vortex d'Unruh.
 2. **`pinn_hydrodynamic_benchmark.json`** : Profils de Froude et de profondeur de canal issus de *Raissi et al. (2019)* pour la physique informée.
+3. **`tda_jhtdb_vortex.json`** : Nuage de points TDA pour l'analyse des sous-niveaux d'isométrie macroscopique.
 
-*Certifié par l'Observatoire SocrateAI.*
+*Certifié par l'Observatoire SocrateAI Master Hub.*

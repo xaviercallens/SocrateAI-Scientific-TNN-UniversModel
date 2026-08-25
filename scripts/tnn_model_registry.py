@@ -14,6 +14,12 @@ from tnn_lab2_boma2d import BOMA2DPivTNN, train_and_save_lab2_model
 from tnn_lab3_hydro_pinn import HydrodynamicPINN, train_and_save_lab3_model
 from tnn_holographic_p4_detector import HolographicTNN
 
+# Import new Lab 5, 6, 7 models
+from tnn_lab5_tda import PersistentHomologyTNN, train_and_save_lab5_model
+from tnn_lab6_navier_stokes import LerayHopfNavierStokesTNN, train_and_save_lab6_model
+from tnn_lab7_k3 import K3PicardLatticeTNN, train_and_save_lab7_model
+
+
 def setup_open_dataset_fixtures(data_dir="data/open_datasets"):
     os.makedirs(data_dir, exist_ok=True)
     
@@ -39,13 +45,23 @@ def setup_open_dataset_fixtures(data_dir="data/open_datasets"):
     with open(os.path.join(data_dir, "pinn_hydrodynamic_benchmark.json"), "w") as f:
         json.dump(pinn_data, f, indent=2)
         
+    # 3. JHTDB Vortex / TDA Dataset Fixture
+    tda_data = {
+        "dataset_name": "JHTDB_Vortex_TDA_Sample",
+        "reference_paper": "Johns Hopkins Turbulence Database",
+        "point_cloud_size": 220,
+        "betti_numbers_target": {"b0": 1, "b1": 2, "b2": 1} # Torus
+    }
+    with open(os.path.join(data_dir, "tda_jhtdb_vortex.json"), "w") as f:
+        json.dump(tda_data, f, indent=2)
+
     print(f"[DATASETS] Open benchmark dataset fixtures created in: {data_dir}")
 
 def initialize_all_tnn_models():
     models_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "models"))
     os.makedirs(models_dir, exist_ok=True)
     
-    print("\n--- INITIALIZING & TRAINING PRETRAINED TNN MODELS (LAB-0 TO LAB-4) ---")
+    print("\n--- INITIALIZING & TRAINING PRETRAINED TNN MODELS (LAB-0 TO LAB-7) ---")
     train_and_save_lab0_model(os.path.join(models_dir, "tnn_lab0_symplectic.pt"))
     train_and_save_lab1_model(os.path.join(models_dir, "tnn_lab1_fourier.pt"))
     train_and_save_lab2_model(os.path.join(models_dir, "tnn_lab2_boma2d.pt"))
@@ -56,11 +72,16 @@ def initialize_all_tnn_models():
     torch.save(lab4_tnn.state_dict(), os.path.join(models_dir, "tnn_lab4_holographic_p4.pt"))
     print(f"[LAB-4 TNN] Holographic P4 Model (chi=8) initialized & saved to: {os.path.join(models_dir, 'tnn_lab4_holographic_p4.pt')}")
 
+    # New Labs (5, 6, 7)
+    train_and_save_lab5_model(os.path.join(models_dir, "tnn_lab5_tda.pt"))
+    train_and_save_lab6_model(os.path.join(models_dir, "tnn_lab6_navier_stokes.pt"))
+    train_and_save_lab7_model(os.path.join(models_dir, "tnn_lab7_k3.pt"))
+
 def print_tnn_inventory_report():
     models_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "models"))
     data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "open_datasets"))
     
-    report_md = f"""# INVENTAIRE COMPLET DES TNN ET DATASETS PRÉ-ENTRAÎNÉS (LAB-0 À LAB-4)
+    report_md = f"""# INVENTAIRE COMPLET DES TNN ET DATASETS PRÉ-ENTRAÎNÉS (LAB-0 À LAB-7)
 
 **Statut :** TNN Spécialisés Initialisés et Poids Sauvegardés  
 **Espace de Stockage :** `./models/` & `./data/open_datasets/`
@@ -74,8 +95,11 @@ def print_tnn_inventory_report():
 | **LAB-0** | `tnn_lab0_symplectic.py` | Symplectic Hamiltonian Neural Network | Conservation de l'Énergie $(q, p)$ | `tnn_lab0_symplectic.pt` |
 | **LAB-1** | `tnn_lab1_fourier.py` | Complex Spectral Optical Correlator | Filtrage Dual Space Fourier | `tnn_lab1_fourier.pt` |
 | **LAB-2** | `tnn_lab2_boma2d.py` | Neural PIV / Conv2D Decoder | Reconstruction Champ de Vitesse (u, v) | `tnn_lab2_boma2d.pt` |
-| **LAB-3** | `tnn_lab3_hydro_pinn.py` | Hydrodynamic PINN (Shallow Water) | Bernoulli $v \\partial_x v + g \\partial_x h = 0$ | `tnn_lab3_hydro_pinn.pt` |
+| **LAB-3** | `tnn_lab3_hydro_pinn.py` | Hydrodynamic PINN (Shallow Water) | Bernoulli $v \partial_x v + g \partial_x h = 0$ | `tnn_lab3_hydro_pinn.pt` |
 | **LAB-4** | `tnn_holographic_p4_detector.py` | Holographic Bottleneck TNN ($\chi = 8$) | Loi d'Aire & Rebond P4 ($r_h$) | `tnn_lab4_holographic_p4.pt` |
+| **LAB-5** | `tnn_lab5_tda.py` | Persistent Homology PointNet | Entrelacement Max-Norm & Wasserstein | `tnn_lab5_tda.pt` |
+| **LAB-6** | `tnn_lab6_navier_stokes.py` | Leray-Hopf Z3 Projection Net | Borne Enstrophie (Divergence Nulle) | `tnn_lab6_navier_stokes.pt` |
+| **LAB-7** | `tnn_lab7_k3.py` | Telluric K3 Oracle Autoencoder | Isomorphisme Matrice Intersection | `tnn_lab7_k3.pt` |
 
 ---
 
@@ -83,8 +107,9 @@ def print_tnn_inventory_report():
 
 1. **`openpiv_vortex_benchmark.json`** : Données de vélocimétrie PIV issues de *Weinfurtner et al. (2011)* pour la cinématique de vortex d'Unruh.
 2. **`pinn_hydrodynamic_benchmark.json`** : Profils de Froude et de profondeur de canal issus de *Raissi et al. (2019)* pour la physique informée.
+3. **`tda_jhtdb_vortex.json`** : Nuage de points TDA pour l'analyse des sous-niveaux d'isométrie macroscopique.
 
-*Certifié par l'Observatoire SocrateAI.*
+*Certifié par l'Observatoire SocrateAI Master Hub.*
 """
     
     inv_path = os.path.join(models_dir, "TNN_INVENTORY_REPORT.md")
