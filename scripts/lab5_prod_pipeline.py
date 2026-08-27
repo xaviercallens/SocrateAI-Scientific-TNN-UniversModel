@@ -98,7 +98,8 @@ def extract_topological_barcode(normalized_tensor_3d: np.ndarray) -> np.ndarray:
         
     if len(diagram) == 0:
         return np.array([[0.0, 0.0]])
-    return diagram
+    return diagram[:, :2]
+
 
 def process_and_audit(dataset_id: str, raw_tensor: np.ndarray, source: str) -> dict:
     raw_h = sha256_hash(raw_tensor)

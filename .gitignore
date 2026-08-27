@@ -3,12 +3,19 @@
 venv/
 env/
 
+# Environment files
+.env
+.env.local
+
 # Datasets
 data/
 *.pt
 *.zip
 
-# IDEs
+# IDEs and cache
 .idea/
 .vscode/
 __pycache__/
+*.egg-info/
+.pytest_cache/
+
