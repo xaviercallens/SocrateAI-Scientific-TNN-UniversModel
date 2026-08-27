@@ -63,7 +63,7 @@ def verify_desi_tda():
     
     # 3. Filter Significant Features (Persistent Topology)
     # Threshold filters out local sampling noise (short lifetimes)
-    threshold = 0.05
+    threshold = 0.005
     significant_features = filter_persistent_features(diagram, threshold=threshold)
     betti = extract_betti_numbers(significant_features)
     
