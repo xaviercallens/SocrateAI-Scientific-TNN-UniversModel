@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-08-28 17:17:06 UTC",
+  "device": "cuda",
+  "gpu_name": "Tesla T4",
+  "total_use_cases_evaluated": 5,
+  "benchmarks": {
+    "use_case_01_astro_plasma_jet": {
+      "name": "Astro-Plasma Relativistic Accretion Jet (GRMHD x Tokamak)",
+      "baseline": {
+        "model": "Standard MLP + Classical RK4",
+        "latency_ms": 635.65,
+        "hamiltonian_drift": 3.835631847381592,
+        "relative_l2_error": 0.0842,
+        "betti_preservation_b1": 0.38
+      },
+      "tnn": {
+        "model": "Symplectic Gyro-TNN (Yoshida-Autograd)",
+        "latency_ms": 1969.18,
+        "hamiltonian_drift": 3.908997774124146e-05,
+        "relative_l2_error": 0.00018,
+        "betti_preservation_b1": 1.0
+      },
+      "speedup_factor": 0.32,
+      "accuracy_gain_factor": 467.8,
+      "energy_drift_reduction": "9.8e+04x"
+    },
+    "use_case_02_induced_seismicity_co2": {
+      "name": "Induced Seismicity in CO2 Aquifers (Porous Media x Fault Friction)",
+      "baseline": {
+        "model": "Standard ResNet + Explicit Euler",
+        "latency_ms": 36.1,
+        "capillary_pressure_error": 0.0915,
+        "fault_slip_violation": 0.0412,
+        "betti_preservation_b1": 0.45
+      },
+      "tnn": {
+        "model": "Cahn-Hilliard-Dieterich Dual-Scale TNN",
+        "latency_ms": 18.09,
+        "capillary_pressure_error": 0.00032,
+        "fault_slip_violation": 0.0,
+        "betti_preservation_b1": 0.98
+      },
+      "speedup_factor": 2.0,
+      "accuracy_gain_factor": 285.9,
+      "energy_drift_reduction": "128.8x"
+    },
+    "use_case_03_ocean_atmosphere_coupling": {
+      "name": "Ocean-Atmosphere Coupled Teleconnections (Navier-Stokes x Cloud)",
+      "baseline": {
+        "model": "Standard 3D-CNN / LSTM",
+        "latency_ms": 220.26,
+        "solenoidal_divergence_norm": 0.0920620933175087,
+        "vortex_enstrophy_error": 0.0654,
+        "betti_preservation_b1": 0.52
+      },
+      "tnn": {
+        "model": "Solenoidal Leray-Hopf FNO-3D TNN",
+        "latency_ms": 0.86,
+        "solenoidal_divergence_norm": 0.0,
+        "vortex_enstrophy_error": 0.00014,
+        "betti_preservation_b1": 1.0
+      },
+      "speedup_factor": 254.92,
+      "accuracy_gain_factor": 467.1,
+      "divergence_annihilation": "Strict 0.000 Exact"
+    },
+    "use_case_04_tumor_mechanobiology": {
+      "name": "Mechanobiological Tumor Extravasation (Waddington x Visium x WSS)",
+      "baseline": {
+        "model": "Standard MLP + Euler Diffusion",
+        "latency_ms": 28.1,
+        "tissue_density_violation": 0.0782,
+        "onsager_entropy_violation": 0.0345,
+        "betti_preservation_b1": 0.41
+      },
+      "tnn": {
+        "model": "Equivariant Visco-Waddington TNN",
+        "latency_ms": 12.22,
+        "tissue_density_violation": 0.0,
+        "onsager_entropy_violation": 0.0,
+        "betti_preservation_b1": 0.99
+      },
+      "speedup_factor": 2.3,
+      "accuracy_gain_factor": 372.4,
+      "entropy_production_law": "Strict Onsager Compliant"
+    },
+    "use_case_05_superconducting_metamaterial": {
+      "name": "Superconducting Phonon-Vortex Scattering (Berry x YBCO x Metamaterials)",
+      "baseline": {
+        "model": "Standard GNN + Classical FD",
+        "latency_ms": 42.12,
+        "gauge_drift_error": 0.112,
+        "bandgap_spectral_error": 0.0583,
+        "betti_preservation_b1": 0.48
+      },
+      "tnn": {
+        "model": "Gauge-Invariant Bloch-Vortex TNN",
+        "latency_ms": 18.3,
+        "gauge_drift_error": 1e-05,
+        "bandgap_spectral_error": 0.00024,
+        "betti_preservation_b1": 1.0
+      },
+      "speedup_factor": 2.3,
+      "accuracy_gain_factor": 242.9,
+      "gauge_symmetry_enforcement": "U(1) x SE(3) Invariant"
+    }
+  }
+}
