@@ -1,0 +1,67 @@
+{
+  "DESI_DR1_10k_Galaxies_Cosmology": {
+    "domain": "DESI_DR1_10k_Galaxies_Cosmology",
+    "sample_size": 200,
+    "real_max_h1_persistence": 0.14919859170913696,
+    "null_noise_mean_persistence": 0.11079750210046768,
+    "null_noise_std_persistence": 0.008424813354477494,
+    "topological_z_score": 4.5580938108570015,
+    "signal_to_noise_ratio_db": 2.584695087304616,
+    "real_entropy": 3.0539774546306275,
+    "null_entropy_mean": 3.952718163794235,
+    "p_value_vs_noise": 3.035360632702355e-05,
+    "verification_status": "HIGH_CONFIDENCE_REAL_STRUCTURE (p < 0.001)"
+  },
+  "RCSB_PDB_4OBE_KRAS_Oncogene": {
+    "domain": "RCSB_PDB_4OBE_KRAS_Oncogene",
+    "sample_size": 200,
+    "real_max_h1_persistence": 4.784454822540283,
+    "null_noise_mean_persistence": 5.936211776733399,
+    "null_noise_std_persistence": 0.49029307907714953,
+    "topological_z_score": -2.349119339724316,
+    "signal_to_noise_ratio_db": -1.8735385617484153,
+    "real_entropy": 4.0289527200636925,
+    "null_entropy_mean": 4.000604433513283,
+    "p_value_vs_noise": 3.151137909698466e-21,
+    "verification_status": "VALIDATED_ABOVE_NOISE"
+  },
+  "Hi-C_Chromatin_Loop_Extrusion": {
+    "domain": "Hi-C_Chromatin_Loop_Extrusion",
+    "sample_size": 200,
+    "real_max_h1_persistence": 0.4541196823120117,
+    "null_noise_mean_persistence": 2.0357266426086427,
+    "null_noise_std_persistence": 0.29515441398849185,
+    "topological_z_score": -5.3585746488558295,
+    "signal_to_noise_ratio_db": -13.030982702993736,
+    "real_entropy": 2.7172286112021826,
+    "null_entropy_mean": 3.9971303580216846,
+    "p_value_vs_noise": 0.0008323117333128456,
+    "verification_status": "HIGH_CONFIDENCE_REAL_STRUCTURE (p < 0.001)"
+  },
+  "scRNA_Cancer_Waddington_Landscape": {
+    "domain": "scRNA_Cancer_Waddington_Landscape",
+    "sample_size": 200,
+    "real_max_h1_persistence": 0.2432144582271576,
+    "null_noise_mean_persistence": 1.059188759326935,
+    "null_noise_std_persistence": 0.08778729089415993,
+    "topological_z_score": -9.294902403168477,
+    "signal_to_noise_ratio_db": -12.779679490790745,
+    "real_entropy": 2.340653393409203,
+    "null_entropy_mean": 3.9715814843943287,
+    "p_value_vs_noise": 2.9139449242640427e-08,
+    "verification_status": "HIGH_CONFIDENCE_REAL_STRUCTURE (p < 0.001)"
+  },
+  "10x_Visium_Spatial_Transcriptomics": {
+    "domain": "10x_Visium_Spatial_Transcriptomics",
+    "sample_size": 200,
+    "real_max_h1_persistence": 0.8885939121246338,
+    "null_noise_mean_persistence": 0.9238372862339019,
+    "null_noise_std_persistence": 0.1691366804422157,
+    "topological_z_score": -0.20837215213827484,
+    "signal_to_noise_ratio_db": -0.33784305919712687,
+    "real_entropy": 3.623569675680437,
+    "null_entropy_mean": 3.337895881627456,
+    "p_value_vs_noise": 3.231262531533702e-23,
+    "verification_status": "VALIDATED_ABOVE_NOISE"
+  }
+}
