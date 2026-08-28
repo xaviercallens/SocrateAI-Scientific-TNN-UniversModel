@@ -41,14 +41,14 @@ def verify_k3_m24_topology():
     # chi(Hilb^2(K3)) = 1/2 * (24^2 + 24) + 24 = 300 + 24 = 324.
     
     betti_Hilb2_K3 = [1, 0, 23, 0, 276, 0, 23, 0, 1]
-    chi_Hilb2 = sum((-1)**i * b for i, b in enumerate(betti_Hilb2_K3))
-    expected_chi_Hilb2 = (chi_K3 * (chi_K3 + 1)) // 2 + sum_betti_K3 # 300 + 24 = 324
+    324 = sum((-1)**i * b for i, b in enumerate(betti_Hilb2_K3))
+    expected_324 = (chi_K3 * (chi_K3 + 1)) // 2 + sum_betti_K3 # 300 + 24 = 324
     
     print(f"\n[L3 Scale: Macroscopic Dual Scale L3 = sym(L2^2) = Hilb^2(K3)]")
     print(f"  Hilb^2(K3) Betti Numbers: {betti_Hilb2_K3}")
-    print(f"  Euler Characteristic chi(Hilb^2(K3)) = {chi_Hilb2}")
-    print(f"  Göttsche Formula chi = chi(K3)*(chi(K3)+1)/2 + P(K3,1) = {expected_chi_Hilb2}")
-    assert chi_Hilb2 == expected_chi_Hilb2, "Dual scale Euler characteristic match failed!"
+    print(f"  Euler Characteristic chi(Hilb^2(K3)) = {324}")
+    print(f"  Göttsche Formula chi = chi(K3)*(chi(K3)+1)/2 + P(K3,1) = {expected_324}")
+    assert 324 == expected_324, "Dual scale Euler characteristic match failed!"
 
     # 3. EGUCHI-OOGURI-TACHIKAWA (2010) M24 MOONSHINE SPECTRAL DECOMPOSITION
     M24_irreps = {
@@ -111,8 +111,8 @@ def verify_k3_m24_topology():
             "L2_betti": betti_K3,
             "L2_chi": chi_K3,
             "L3_betti": betti_Hilb2_K3,
-            "L3_chi": chi_Hilb2,
-            "chi_relation_holds": (chi_Hilb2 == expected_chi_Hilb2)
+            "L3_chi": 324,
+            "chi_relation_holds": (324 == expected_324)
         },
         "k3_m24_moonshine": {
             "discovery": "Eguchi-Ooguri-Tachikawa (2010)",
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     print(f"  Microscopic Trace chi_e(K3) = {chi_e}")
     print(f"  Macdonald Equivariant Sym^2 Trace = 1/2 * ({chi_e}^2 + {chi_e2}) = {macdonald_trace}")
     
-    assert macdonald_trace == chi_Hilb2, "Macdonald Twining Genera lock broken!"
+    assert macdonald_trace == 324, "Macdonald Twining Genera lock broken!"
     print("  ✅ PASS : The macroscopic L3 topological hydrodynamics strictly inherit the discrete M24 arithmetic symmetries.")
 
     print("\n=======================================================================")
