@@ -2,6 +2,9 @@ import HoloEngine.DualScale
 import HoloEngine.TopoStability
 import HoloEngine.FourierStateZ3
 import HoloEngine.PenroseFormalism
+import HoloEngine.EtaQuotient
+import HoloEngine.K3Moduli
+import HoloEngine.BlackHole
 
 /-!
 # HoloEngine — Formal Mathematics Library

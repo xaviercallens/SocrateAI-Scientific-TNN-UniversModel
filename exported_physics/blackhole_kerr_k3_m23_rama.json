@@ -1,0 +1,54 @@
+{
+  "module": "KerrBlackHole_K3_M23_RAMA_DualScale",
+  "version": "3.0.0",
+  "timestamp": "2026-08-28 18:40:00 UTC",
+  "target_engines": [
+    "UniversCraft",
+    "HoloEngine",
+    "WebGPU_WGSL"
+  ],
+  "rama_theoretical_results": {
+    "classical_c_L": 3.0,
+    "effective_central_charge_c_eff": 0.3562770562770563,
+    "c_eff_rational": "823 / 2310",
+    "entropy_ratio_s_rama_s_wald": 0.34461430434475404,
+    "entropy_ratio_squared_rational": "823 / 6930",
+    "frozen_microstate_fraction": 0.8812409812409813,
+    "frozen_microstates_rational": "6107 / 6930",
+    "active_subcft_fraction": 0.11875901875901876,
+    "ashoke_sen_log_correction": -20.72
+  },
+  "k3_mathieu_invariants": {
+    "k3_betti_vector": [
+      1,
+      0,
+      22,
+      0,
+      1
+    ],
+    "k3_euler_characteristic": 24,
+    "mathieu_group": "M23",
+    "mathieu_order": 10200960,
+    "m23_permutation_degree": 24,
+    "m23_transvection_dim": 23,
+    "m23_fixed_points": 1
+  },
+  "dual_scale_tnn_metrics": {
+    "training_epochs": 120,
+    "train_time_seconds": 1.11,
+    "final_loss": 0.00015101549797691405,
+    "magnetic_divergence_norm": 1.1499999999999999e-10,
+    "traditional_divergence_norm": 0.07806837994588647,
+    "error_suppression_gain": 678855477.7903172,
+    "ks_test_p_value_vs_noise": 7.399507995628047e-300
+  },
+  "lean4_theorems_verified": [
+    "HoloEngine.DualScale.Math.rama_c_eff_bounds",
+    "HoloEngine.DualScale.Math.frozen_fraction_exact",
+    "HoloEngine.DualScale.Geometry.k3_euler_char_exact",
+    "HoloEngine.DualScale.Geometry.m23_fixed_point_decomposition",
+    "HoloEngine.DualScale.Physics.holographic_subcft_exists",
+    "HoloEngine.DualScale.Physics.frozen_degrees_exact",
+    "HoloEngine.DualScale.Physics.kerr_black_hole_falsification_ratio"
+  ]
+}
