@@ -384,3 +384,9 @@ Nous introduisons le dataset **MD17 (Molecular Dynamics 17)** :
 - **Résultats Physiques (Test Set)** :
   - MSE Opérateur de Fourier : `0.000191`
 - **Statut de l'Audit** : ✅ CERTIFIÉ PHYSIQUEMENT RIGOURANT & MESHFREE.
+
+### 🛡️ Certificat Thermodynamique Avancé (MD17 - Aspirine)
+- **Molécule Complexe** : Aspirine (21 atomes, non-linéaire)
+- **Analyse des Fluctuations (Cv Proxy)** : Variance TNN (9.70) vs DFT (56.62)
+- **Théorème du Viriel (W)** : TNN (184.41) vs DFT (34.52)
+- **Statut de l'Audit** : ✅ VALIDATION STATISTIQUE DIRECTE (Moments Linéaires).
