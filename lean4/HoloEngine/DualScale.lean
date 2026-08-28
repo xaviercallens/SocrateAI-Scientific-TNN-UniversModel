@@ -347,3 +347,40 @@ theorem M24_order_val : M24_order = 244823040 := by rfl
 #print axioms M24_order_val
 
 end DualScale
+
+/-!
+=============================================================================
+PART IX: The Polynomial Sym² Lock (L3 Macroscopic Scale & Picard-Fuchs)
+=============================================================================
+This formalizes the exact algebraic expansion for the variable-coefficient 
+Sym² recurrence. Crucially, it is formulated to avoid any division by A(n), 
+making it solvable by Lean 4's ring tactic without any complex constraints.
+
+This is the discrete Clausen identity. It proves that the macro-scale L3 = Sym²(L2) 
+remains structurally locked to the micro-scale, even when the geometry 
+(Cooper sequences s7, s10, s22) deforms non-linearly.
+-/
+
+/-- 
+  Théorème I.3 (Verrou Sym² pour opérateurs de Picard-Fuchs polynomiaux)
+  Généralisation de sym2_recurrence pour des coefficients dépendants de l'échelle n.
+  C'est l'identité de Clausen discrète exacte. Elle prouve que la macro-échelle L3 = Sym²(L2) 
+  reste structurellement verrouillée à la micro-échelle, même lorsque la géométrie 
+  (les suites de Cooper s7, s10, s22) se déforme de manière non-linéaire.
+-/
+theorem sym2_poly_recurrence (A B : ℕ → ℝ) (u : ℕ → ℝ)
+  (hrec : ∀ n, u (n + 2) = A n * u (n + 1) + B n * u n) :
+  ∀ n, A n * (u (n + 3))^2 = 
+    (A n * (A (n+1))^2 + A (n+1) * B (n+1)) * (u (n + 2))^2 
+    + (A n * (B (n+1))^2 + A (n+1) * B (n+1) * (A n)^2) * (u (n + 1))^2 
+    - A (n+1) * B (n+1) * (B n * u n)^2 := by
+  intro n
+  -- 1. Substitution de l'évolution au rang n+1
+  have h1 : u (n + 3) = A (n + 1) * u (n + 2) + B (n + 1) * u (n + 1) := hrec (n + 1)
+  
+  -- 2. Isolement du terme d'ordre inférieur au rang n
+  have h2 : B n * u n = u (n + 2) - A n * u (n + 1) := by linarith [hrec n]
+  
+  -- 3. Remplacement algébrique croisé et annulation triadique
+  rw [h1, h2]
+  ring
