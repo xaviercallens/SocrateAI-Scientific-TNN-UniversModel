@@ -414,3 +414,10 @@ theorem deep_burn_modular_weight_is_broken_susy :
   eta_quotient_weight deep_burn_exponents = -183 / 2 := by
   rfl
 
+
+/-!
+=============================================================================
+CERTIFICAT D'AUDIT: TIER-A VERIFICATION
+=============================================================================
+-/
+#print axioms sym2_poly_recurrence
