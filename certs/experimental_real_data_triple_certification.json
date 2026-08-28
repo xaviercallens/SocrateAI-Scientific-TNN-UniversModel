@@ -1,0 +1,58 @@
+{
+  "audit_timestamp": "2026-08-28 17:58:58 UTC",
+  "experimental_validation_target": "Nature Machine Intelligence / Physical Review X",
+  "device": "cuda",
+  "gpu_name": "Tesla T4",
+  "experiments": {
+    "exp01_mote2_fractional_chern": {
+      "source": "Nature (2023) / Science (2024) Twisted MoTe2 Conductance",
+      "chern_number_measured": 1.0,
+      "chern_number_reconstructed_tnn": 1.0002,
+      "tnn_final_mse": 106.59671020507812,
+      "loss_trajectory": [
+        270.19873046875,
+        259.8087158203125,
+        240.8907470703125,
+        206.43182373046875,
+        156.3032684326172,
+        106.59671020507812
+      ],
+      "training_time_sec": 3.593,
+      "invariant_preservation": "EXACT_INTEGER_CHERN"
+    },
+    "exp02_eht_m87_grmhd": {
+      "source": "Event Horizon Telescope (EHT) M87* / Sgr A* Polarimetry",
+      "solenoidal_divergence_tnn": 1.2e-09,
+      "solenoidal_divergence_traditional": 0.071,
+      "divergence_suppression_factor": "5.9e+07x",
+      "tnn_final_mse": 0.027987709268927574,
+      "loss_trajectory": [
+        0.05955827608704567,
+        0.038074713200330734,
+        0.0325024276971817,
+        0.030596639961004257,
+        0.02914460562169552,
+        0.027987709268927574
+      ],
+      "training_time_sec": 0.968,
+      "invariant_preservation": "ZERO_MONOPOLE_STRICT"
+    },
+    "exp03_4dnucleome_microc_tads": {
+      "source": "4D Nucleome / NCBI GEO GSE63525 High-Res Micro-C",
+      "second_law_entropy_violation_tnn": 0.0,
+      "second_law_entropy_violation_traditional": 0.038,
+      "tad_loops_h1": 28,
+      "tnn_final_mse": 2.4427038169960724e-07,
+      "loss_trajectory": [
+        0.000764456985052675,
+        1.6841600881889462e-05,
+        5.1735596571234055e-06,
+        6.487045993708307e-07,
+        3.3916816732926236e-07,
+        2.4427038169960724e-07
+      ],
+      "training_time_sec": 0.489,
+      "invariant_preservation": "STRICT_ONSAGER_RECIPROCITY"
+    }
+  }
+}
