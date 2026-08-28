@@ -1,0 +1,92 @@
+{
+  "01_hic_chromatin": {
+    "domain": "01_Hi-C_3D_Chromatin_Loops",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 37,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.5566350221633911,
+    "topological_entropy": 2.9210321586320815
+  },
+  "02_scrna_cancer_manifold": {
+    "domain": "02_scRNA_Waddington_Cancer_Trajectory",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 33,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.1718948483467102,
+    "topological_entropy": 3.1943097735413875
+  },
+  "03_kras_oncogene_protein": {
+    "domain": "03_KRAS_Oncogene_Protein_Structure",
+    "num_points_analyzed": 200,
+    "betti_0_clusters": 200,
+    "betti_1_loops": 89,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 5.046457290649414,
+    "topological_entropy": 4.009811590372725
+  },
+  "04_spatial_transcriptomics": {
+    "domain": "04_10x_Visium_Tumor_Infiltration",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 49,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.8108404278755188,
+    "topological_entropy": 3.5436002343291464
+  },
+  "05_dna_methylation": {
+    "domain": "05_Pan_Cancer_DNA_Methylome",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 81,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.09384693205356598,
+    "topological_entropy": 4.068255358871545
+  },
+  "06_pharmacogenomics_gdsc": {
+    "domain": "06_GDSC_Cancer_Drug_Resistance",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 101,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.3005923628807068,
+    "topological_entropy": 4.284130672870002
+  },
+  "07_rna_pseudoknots": {
+    "domain": "07_RNA_3D_Pseudoknot_Topology",
+    "num_points_analyzed": 100,
+    "betti_0_clusters": 1,
+    "betti_1_loops": 0,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.0,
+    "topological_entropy": -0.0
+  },
+  "08_nuclear_morphology": {
+    "domain": "08_Cancer_Nuclear_Pleomorphism",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 58,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.004858991131186485,
+    "topological_entropy": 3.799437864193283
+  },
+  "09_tcr_immune_repertoire": {
+    "domain": "09_VDJdb_TCR_Immune_Clusters",
+    "num_points_analyzed": 250,
+    "betti_0_clusters": 250,
+    "betti_1_loops": 111,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.12414038181304932,
+    "topological_entropy": 4.348492884366239
+  },
+  "10_metabolic_recon3d": {
+    "domain": "10_Recon3D_Metabolic_Cycle_Homology",
+    "num_points_analyzed": 150,
+    "betti_0_clusters": 150,
+    "betti_1_loops": 76,
+    "betti_2_voids": 0,
+    "max_h1_persistence": 0.19032923504710197,
+    "topological_entropy": 1.1183339839035111
+  }
+}
