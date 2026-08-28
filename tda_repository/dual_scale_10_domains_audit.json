@@ -1,0 +1,72 @@
+{
+  "domain_01_topological_materials": {
+    "domain": "Quantum Topological Materials & Spintronics",
+    "b0_degeneracy_clusters": 200,
+    "b1_chern_loops": 235,
+    "h1_entropy": 5.446375709404793,
+    "points_analyzed": 200
+  },
+  "domain_02_plasma_tokamak": {
+    "domain": "Plasma Turbulence & Tokamak Fusion",
+    "b0_flux_tubes": 200,
+    "b1_drift_vortex_loops": 12,
+    "h1_entropy": 1.6457834893825396,
+    "points_analyzed": 200
+  },
+  "domain_03_hea_dislocations": {
+    "domain": "High-Entropy Alloys & Fracture Dislocation",
+    "b0_dislocation_pileups": 199,
+    "b1_frank_read_loops": 1,
+    "h1_entropy": -0.0,
+    "points_analyzed": 200
+  },
+  "domain_04_connectomics_neurodynamics": {
+    "domain": "Multiscale Neurodynamics & Connectomics",
+    "b0_functional_cliques": 68,
+    "b1_synchronous_loops": 26,
+    "h1_entropy": 2.754406737612667,
+    "points_analyzed": 68
+  },
+  "domain_05_cloud_microphysics": {
+    "domain": "Cloud Microphysics & Planetary Climate Teleconnections",
+    "b0_convective_cores": 200,
+    "b1_kelvin_helmholtz_rings": 153,
+    "h1_entropy": 5.030437921392434,
+    "points_analyzed": 200
+  },
+  "domain_06_superconductor_vortices": {
+    "domain": "Superconducting Vortex Lattices & Fluxoid Pinning",
+    "b0_abrikosov_vortex_cores": 200,
+    "b1_flux_pinning_loops": 78,
+    "h1_entropy": 4.073842929350899,
+    "points_analyzed": 200
+  },
+  "domain_07_cardiovascular_wss": {
+    "domain": "Cardiovascular Hemodynamics & Plaque Thrombosis",
+    "b0_arterial_landmarks": 200,
+    "b1_secondary_vorticity_loops": 0,
+    "h1_entropy": 0.0,
+    "points_analyzed": 200
+  },
+  "domain_08_seismology_rupture": {
+    "domain": "Seismology, Fault Mechanics & Geodynamics",
+    "b0_aftershock_hypocenters": 200,
+    "b1_fault_system_loops": 39,
+    "h1_entropy": 3.1173865724226184,
+    "points_analyzed": 200
+  },
+  "domain_09_porous_media_co2": {
+    "domain": "Multiphase Granular & Porous Media Flow",
+    "b0_isolated_pore_bodies": 200,
+    "b1_percolation_throat_channels": 172,
+    "h1_entropy": 5.102689397235531,
+    "points_analyzed": 200
+  },
+  "domain_10_phononic_metamaterials": {
+    "domain": "Phononic / Photonic Metamaterials",
+    "b0_bloch_eigenstate_branches": 200,
+    "b1_bandgap_spectral_loops": 46,
+    "h1_entropy": 2.661765424512367,
+    "points_analyzed": 200
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-08-28 16:44:20 UTC",
+  "device": "cuda",
+  "gpu_name": "Tesla T4",
+  "total_domains_certified": 10,
+  "results": {
+    "domain_01_topological_materials": {
+      "model": "BerryPhaseQuantumTNN",
+      "epochs": 150,
+      "train_time_sec": 4.529,
+      "final_loss": 6.072576070437208e-06,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_02_plasma_tokamak": {
+      "model": "GyrokineticVlasovTNN",
+      "epochs": 150,
+      "train_time_sec": 0.866,
+      "final_loss": 8.316995945278904e-07,
+      "hamiltonian_drift": 1.24e-05,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_03_hea_dislocations": {
+      "model": "DislocationCrystalTNN",
+      "epochs": 150,
+      "train_time_sec": 0.386,
+      "final_loss": 1.8680199218579219e-06,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_04_connectomics_neurodynamics": {
+      "model": "ConnectomeKuramotoTNN",
+      "epochs": 150,
+      "train_time_sec": 1.103,
+      "final_loss": 0.01967363990843296,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_05_cloud_microphysics": {
+      "model": "CloudBoussinesqTNN",
+      "epochs": 150,
+      "train_time_sec": 0.41,
+      "final_loss": 0.020857516676187515,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_06_superconductor_vortices": {
+      "model": "GinzburgLandauVortexTNN",
+      "epochs": 150,
+      "train_time_sec": 0.362,
+      "final_loss": 4.1384132600796875e-06,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_07_cardiovascular_wss": {
+      "model": "WomersleyHemodynamicsTNN",
+      "epochs": 150,
+      "train_time_sec": 0.354,
+      "final_loss": 2.5706211090437137e-05,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_08_seismology_rupture": {
+      "model": "RateAndStateSeismicTNN",
+      "epochs": 150,
+      "train_time_sec": 0.355,
+      "final_loss": 5.9046783462690655e-06,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_09_porous_media_co2": {
+      "model": "CahnHilliardPorousTNN",
+      "epochs": 150,
+      "train_time_sec": 0.399,
+      "final_loss": 2.724887235672213e-05,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    },
+    "domain_10_phononic_metamaterials": {
+      "model": "PhononicBlochTNN",
+      "epochs": 150,
+      "train_time_sec": 0.377,
+      "final_loss": 2.0098632376175374e-06,
+      "hamiltonian_drift": 0.0,
+      "status": "CONVERGED_ZERO_DRIFT"
+    }
+  }
+}

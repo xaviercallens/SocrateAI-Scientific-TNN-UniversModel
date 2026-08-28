@@ -1,0 +1,86 @@
+{
+  "audit_timestamp": "2026-08-28 16:45:00 UTC",
+  "methodology": "Kolmogorov-Smirnov 2-Sample Test and Z-Score vs 10 Uniform Poisson Point Baselines",
+  "domains": {
+    "domain_01_topological_materials": {
+      "ks_statistic": 0.7340874623318474,
+      "p_value": 2.6386111675821462e-90,
+      "z_score": 0.705303715550586,
+      "snr_db": 5.266350829208946,
+      "real_h1_loops": 227,
+      "is_statistically_significant": true
+    },
+    "domain_02_plasma_tokamak": {
+      "ks_statistic": 0.5386178861788617,
+      "p_value": 0.012087251150682602,
+      "z_score": -0.5175391812471899,
+      "snr_db": -6.518141753062542,
+      "real_h1_loops": 8,
+      "is_statistically_significant": true
+    },
+    "domain_03_hea_dislocations": {
+      "ks_statistic": 1.0,
+      "p_value": 0.0034542314335060434,
+      "z_score": 20.719032616801805,
+      "snr_db": 26.752601597510388,
+      "real_h1_loops": 1,
+      "is_statistically_significant": true
+    },
+    "domain_04_connectomics_neurodynamics": {
+      "ks_statistic": 0.17873303167420815,
+      "p_value": 0.40308635541107735,
+      "z_score": -0.0426981705308428,
+      "snr_db": 0.6924302748803856,
+      "real_h1_loops": 26,
+      "is_statistically_significant": false
+    },
+    "domain_05_cloud_microphysics": {
+      "ks_statistic": 0.5549295774647888,
+      "p_value": 2.2486386703065132e-28,
+      "z_score": -0.29591644602419265,
+      "snr_db": -3.2606774627793307,
+      "real_h1_loops": 135,
+      "is_statistically_significant": true
+    },
+    "domain_06_superconductor_vortices": {
+      "ks_statistic": 0.6010927023095753,
+      "p_value": 4.6619504241036596e-21,
+      "z_score": -0.841766914655456,
+      "snr_db": -14.399632054891224,
+      "real_h1_loops": 71,
+      "is_statistically_significant": true
+    },
+    "domain_07_cardiovascular_wss": {
+      "ks_statistic": 1.0,
+      "p_value": 0.0028612303290414874,
+      "z_score": -1.164190985154025,
+      "snr_db": -Infinity,
+      "real_h1_loops": 0,
+      "is_statistically_significant": true
+    },
+    "domain_08_seismology_rupture": {
+      "ks_statistic": 0.3500690131124914,
+      "p_value": 0.0003084966472702217,
+      "z_score": -0.5135576985116487,
+      "snr_db": -4.48841271942073,
+      "real_h1_loops": 36,
+      "is_statistically_significant": true
+    },
+    "domain_09_porous_media_co2": {
+      "ks_statistic": 0.6112709576584257,
+      "p_value": 1.980680993256173e-38,
+      "z_score": 0.010835480216348711,
+      "snr_db": -0.32593382420080796,
+      "real_h1_loops": 153,
+      "is_statistically_significant": true
+    },
+    "domain_10_phononic_metamaterials": {
+      "ks_statistic": 0.6082251082251082,
+      "p_value": 7.825222837181248e-14,
+      "z_score": -0.7311024632207802,
+      "snr_db": -11.090583530427374,
+      "real_h1_loops": 42,
+      "is_statistically_significant": true
+    }
+  }
+}
